@@ -1,0 +1,2757 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hồ Sơ Nhân Sự Lớp 12-3 | Căn Cứ Số 7</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    :root {
+        --bg-body: #F4F7FB;
+        --navy-950: #070D1E;
+        --navy-900: #0B132B;
+        --navy-800: #1C2541;
+        --navy-700: #233154;
+        --navy-600: #2E4070;
+        --blue-accent: #2563EB;
+        --blue-light: #EFF6FF;
+        --white: #FFFFFF;
+        --slate-100: #F1F5F9;
+        --slate-200: #E2E8F0;
+        --slate-400: #94A3B8;
+        --slate-600: #475569;
+        --slate-700: #334155;
+        --danger: #EF4444;
+        --warning: #F59E0B;
+        --success: #10B981;
+        --shadow-sm: 0 4px 6px -1px rgba(11, 19, 43, 0.05);
+        --shadow-md: 0 10px 25px -5px rgba(11, 19, 43, 0.08);
+        --shadow-lg: 0 20px 35px -10px rgba(11, 19, 43, 0.16);
+        --radius-card: 18px;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+        background-color: var(--bg-body);
+        color: var(--navy-900);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* Subtle Tactical Grid Pattern */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-image: radial-gradient(var(--slate-200) 1.2px, transparent 1.2px);
+        background-size: 24px 24px;
+        z-index: -1;
+        opacity: 0.7;
+        pointer-events: none;
+    }
+
+    /* HEADER */
+    header {
+        background: linear-gradient(135deg, var(--navy-950) 0%, var(--navy-800) 100%);
+        color: var(--white);
+        padding: clamp(28px, 5vw, 44px) 20px clamp(24px, 4vw, 32px);
+        border-bottom: 3px solid var(--blue-accent);
+        box-shadow: 0 10px 30px rgba(7, 13, 30, 0.25);
+    }
+
+    .header-content {
+        max-width: 1350px;
+        margin: 0 auto;
+        text-align: center;
+        width: 100%;
+    }
+
+    .badge-base {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(37, 99, 235, 0.15);
+        border: 1px solid rgba(37, 99, 235, 0.4);
+        color: #93C5FD;
+        padding: 5px 14px;
+        border-radius: 30px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    .badge-base i {
+        color: #60A5FA;
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.4; transform: scale(0.95); }
+    }
+
+    header h1 {
+        font-size: clamp(1.4rem, 4vw, 2.1rem);
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        margin-bottom: 6px;
+        background: linear-gradient(90deg, #FFFFFF, #CBD5E1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    header p {
+        color: var(--slate-400);
+        font-size: clamp(0.8rem, 2vw, 0.92rem);
+        max-width: 750px;
+        margin: 0 auto 16px;
+        line-height: 1.5;
+    }
+
+    /* CONTROLS (SEARCH & TABS) */
+    .controls-container {
+        max-width: 1350px;
+        margin: -22px auto 25px;
+        padding: 0 20px;
+        position: relative;
+        z-index: 10;
+        width: 100%;
+    }
+
+    .search-wrapper {
+        background: var(--white);
+        border-radius: 50px;
+        padding: 9px 20px;
+        box-shadow: var(--shadow-md);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid var(--slate-200);
+        max-width: 440px;
+        width: 100%;
+        margin: 0 auto 16px;
+        transition: var(--transition);
+    }
+
+    .search-wrapper:focus-within {
+        border-color: var(--blue-accent);
+        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+    }
+
+    .search-wrapper i {
+        color: var(--slate-400);
+        font-size: 1rem;
+    }
+
+    .search-wrapper input {
+        border: none;
+        outline: none;
+        width: 100%;
+        font-size: 0.9rem;
+        color: var(--navy-900);
+        font-weight: 600;
+        background: transparent;
+    }
+
+    /* TACTICAL BUTTONS (BỐI CẢNH & MAP) */
+    .tactical-actions-bar {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+    }
+
+    .btn-tactical {
+        background: var(--white);
+        color: var(--navy-900);
+        border: 1px solid var(--slate-200);
+        padding: 8px 18px;
+        border-radius: 30px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: var(--transition);
+        box-shadow: var(--shadow-sm);
+        user-select: none;
+    }
+
+    .btn-tactical i {
+        color: var(--blue-accent);
+        font-size: 0.95rem;
+        transition: color 0.2s ease;
+    }
+
+    .btn-tactical:hover {
+        background: var(--navy-900);
+        color: var(--white);
+        border-color: var(--navy-900);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+    }
+
+    .btn-tactical:hover i {
+        color: #93C5FD;
+    }
+
+    /* FILTER TABS */
+    .tabs-wrapper {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding: 6px 4px 12px;
+        scrollbar-width: thin;
+        scrollbar-color: var(--slate-400) transparent;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .tabs-wrapper::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .tabs-wrapper::-webkit-scrollbar-thumb {
+        background: var(--slate-400);
+        border-radius: 10px;
+    }
+
+    @media (min-width: 1100px) {
+        .tabs-wrapper {
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    }
+
+    .tab-btn {
+        background: var(--white);
+        color: var(--slate-600);
+        border: 1px solid var(--slate-200);
+        padding: 7px 14px;
+        border-radius: 40px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        cursor: pointer;
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: var(--transition);
+        box-shadow: var(--shadow-sm);
+        flex-shrink: 0;
+        user-select: none;
+    }
+
+    .tab-btn:hover {
+        background: var(--blue-light);
+        color: var(--blue-accent);
+        border-color: var(--blue-accent);
+        transform: translateY(-2px);
+    }
+
+    .tab-btn.active {
+        background: var(--navy-900);
+        color: var(--white);
+        border-color: var(--navy-900);
+        box-shadow: 0 6px 16px rgba(11, 19, 43, 0.25);
+    }
+
+    .tab-btn .count {
+        background: rgba(0, 0, 0, 0.08);
+        padding: 1px 6px;
+        border-radius: 10px;
+        font-size: 0.72rem;
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    .tab-btn.active .count {
+        background: var(--blue-accent);
+        color: var(--white);
+    }
+
+    /* MAIN CONTENT & CARDS GRID */
+    main {
+        max-width: 1350px;
+        margin: 0 auto;
+        padding: 0 20px 50px;
+        width: 100%;
+        flex-grow: 1;
+    }
+
+    .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 20px;
+        width: 100%;
+    }
+
+    /* 3D FLIP CARD CONTAINER */
+    .card-container {
+        perspective: 1400px;
+        height: 480px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.75s cubic-bezier(0.4, 0.2, 0.2, 1);
+        transform-style: preserve-3d;
+    }
+
+    .card-container.is-flipped .card-inner {
+        transform: rotateY(180deg);
+    }
+
+    /* CARD FACES */
+    .card-face {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: var(--radius-card);
+        background: var(--white);
+        border: 1px solid var(--slate-200);
+        box-shadow: var(--shadow-md);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: var(--transition);
+    }
+
+    .card-container:hover .card-face {
+        box-shadow: var(--shadow-lg);
+        border-color: rgba(37, 99, 235, 0.35);
+    }
+
+    /* ================= CARD FRONT ================= */
+    .card-front {
+        padding: 0;
+    }
+
+    .card-image-box {
+        position: relative;
+        width: 100%;
+        height: 76%;
+        background: var(--navy-900);
+        overflow: hidden;
+    }
+
+    .card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+        transition: transform 0.6s ease;
+        display: block;
+    }
+
+    .card-container:hover .card-img {
+        transform: scale(1.05);
+    }
+
+    .avatar-fallback {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--navy-800) 0%, var(--navy-950) 100%);
+        color: var(--white);
+        gap: 10px;
+    }
+
+    .avatar-fallback i {
+        font-size: 3.2rem;
+        color: rgba(255, 255, 255, 0.2);
+    }
+
+    .avatar-fallback span {
+        font-size: 0.75rem;
+        color: var(--slate-400);
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    .image-overlay-top {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 2;
+        gap: 6px;
+    }
+
+    .id-badge {
+        font-family: 'JetBrains Mono', monospace;
+        background: rgba(7, 13, 30, 0.85);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        color: var(--white);
+        padding: 4px 9px;
+        border-radius: 8px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        white-space: nowrap;
+    }
+
+    .group-tag {
+        font-size: 0.68rem;
+        font-weight: 800;
+        padding: 4px 9px;
+        border-radius: 20px;
+        text-transform: uppercase;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 60%;
+    }
+
+    .card-image-box::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 35px;
+        background: linear-gradient(to top, var(--white) 0%, transparent 100%);
+        pointer-events: none;
+    }
+
+    .card-front-info {
+        height: 24%;
+        padding: 6px 14px 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: var(--white);
+    }
+
+    .npc-headline {
+        text-align: left;
+    }
+
+    .npc-name-row {
+        display: flex;
+        align-items: baseline;
+        gap: 6px;
+        margin-bottom: 2px;
+        flex-wrap: nowrap;
+    }
+
+    .npc-name {
+        font-size: 1.15rem;
+        font-weight: 800;
+        color: var(--navy-950);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex-shrink: 0;
+        max-width: 55%;
+    }
+
+    .npc-pinyin {
+        font-size: 0.75rem;
+        color: var(--slate-400);
+        font-weight: 600;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex-grow: 1;
+    }
+
+    .npc-role {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--blue-accent);
+        background: var(--blue-light);
+        padding: 2px 8px;
+        border-radius: 6px;
+        margin-top: 2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+    }
+
+    .card-front-footer {
+        border-top: 1px solid var(--slate-200);
+        padding-top: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 0.72rem;
+        gap: 6px;
+    }
+
+    .meta-stat {
+        color: var(--slate-600);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .flip-btn-hint {
+        color: var(--blue-accent);
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        transition: var(--transition);
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .card-container:hover .flip-btn-hint i {
+        transform: rotate(180deg);
+    }
+
+    /* ================= CARD BACK ================= */
+    .card-back {
+        transform: rotateY(180deg);
+        background: var(--navy-900);
+        color: var(--white);
+        border-color: var(--navy-800);
+    }
+
+    .card-back-header {
+        background: var(--navy-950);
+        padding: 12px 14px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        flex-shrink: 0;
+        gap: 8px;
+    }
+
+    .back-title {
+        font-size: 0.85rem;
+        font-weight: 800;
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .back-title i {
+        color: var(--blue-accent);
+        flex-shrink: 0;
+    }
+
+    .back-role-badge {
+        font-size: 0.68rem;
+        background: rgba(255, 255, 255, 0.1);
+        color: #93C5FD;
+        padding: 2px 6px;
+        border-radius: 5px;
+        font-family: 'JetBrains Mono', monospace;
+        flex-shrink: 0;
+    }
+
+    .card-back-body {
+        padding: 12px 14px;
+        overflow-y: auto;
+        flex-grow: 1;
+        scrollbar-width: thin;
+        scrollbar-color: var(--navy-600) transparent;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .card-back-body::-webkit-scrollbar {
+        width: 4px;
+    }
+    .card-back-body::-webkit-scrollbar-thumb {
+        background: var(--navy-600);
+        border-radius: 10px;
+    }
+
+    .back-specs-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 4px;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 8px 6px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        text-align: center;
+        flex-shrink: 0;
+    }
+
+    .spec-box .label {
+        font-size: 0.6rem;
+        color: var(--slate-400);
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-bottom: 2px;
+    }
+
+    .spec-box .val {
+        font-size: 0.72rem;
+        color: var(--white);
+        font-weight: 700;
+        font-family: 'JetBrains Mono', monospace;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .dossier-section {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .dossier-heading {
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        font-weight: 800;
+        letter-spacing: 0.8px;
+        color: #93C5FD;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .dossier-text {
+        font-size: 0.75rem;
+        color: #CBD5E1;
+        line-height: 1.45;
+        background: rgba(255, 255, 255, 0.03);
+        padding: 6px 10px;
+        border-radius: 8px;
+        border-left: 2px solid var(--blue-accent);
+    }
+
+    .pros-cons-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+    }
+
+    .pro-card, .con-card {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 6px 8px;
+        border-radius: 8px;
+        font-size: 0.7rem;
+        line-height: 1.35;
+    }
+
+    .pro-card { border-left: 2px solid var(--success); color: #A7F3D0; }
+    .con-card { border-left: 2px solid var(--danger); color: #FECACA; }
+
+    .pro-card strong, .con-card strong {
+        display: block;
+        margin-bottom: 2px;
+        font-size: 0.62rem;
+        text-transform: uppercase;
+    }
+    .pro-card strong { color: var(--success); }
+    .con-card strong { color: var(--danger); }
+
+    .card-back-footer {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 10px 14px;
+        display: flex;
+        justify-content: center;
+        background: var(--navy-950);
+        flex-shrink: 0;
+    }
+
+    .flip-back-btn {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: var(--white);
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+        transition: var(--transition);
+        user-select: none;
+    }
+
+    .flip-back-btn:hover {
+        background: var(--blue-accent);
+        border-color: var(--blue-accent);
+    }
+
+    /* GROUP BADGE COLORS */
+    .group-can-bo { background: rgba(55, 48, 163, 0.9); color: #E0E7FF; }
+    .group-trum-truong { background: rgba(153, 27, 27, 0.9); color: #FEE2E2; }
+    .group-bat-nat { background: rgba(146, 64, 14, 0.9); color: #FEF3C7; }
+    .group-co-lap { background: rgba(107, 33, 168, 0.9); color: #F3E8FF; }
+    .group-banh-beo { background: rgba(157, 23, 77, 0.9); color: #FCE7F3; }
+    .group-vdv { background: rgba(6, 95, 70, 0.9); color: #D1FAE5; }
+    .group-cay-hai { background: rgba(154, 52, 18, 0.9); color: #FFEDD5; }
+    .group-ga-bong { background: rgba(159, 18, 57, 0.9); color: #FFE4E6; }
+    .group-chi-huy { background: rgba(21, 94, 117, 0.9); color: #CFFAFE; }
+
+    /* EMPTY STATE */
+    .empty-state {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 50px 20px;
+        background: var(--white);
+        border-radius: var(--radius-card);
+        border: 1px dashed var(--slate-200);
+    }
+
+    .empty-state i {
+        font-size: 2.8rem;
+        color: var(--slate-400);
+        margin-bottom: 10px;
+    }
+
+    .empty-state h3 {
+        font-size: 1.1rem;
+        color: var(--navy-900);
+        margin-bottom: 4px;
+    }
+
+    /* FOOTER */
+    footer {
+        background: var(--white);
+        border-top: 1px solid var(--slate-200);
+        padding: 20px;
+        text-align: center;
+        color: var(--slate-600);
+        font-size: 0.8rem;
+        margin-top: auto;
+    }
+
+    /* ================= INTRO GAME ONBOARDING MODAL ================= */
+    #introModal {
+        position: fixed;
+        inset: 0;
+        background: rgba(7, 13, 30, 0.88);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        opacity: 1;
+        transition: opacity 0.4s ease;
+    }
+
+    #introModal.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .intro-card {
+        background: linear-gradient(145deg, var(--navy-900) 0%, var(--navy-950) 100%);
+        border: 1px solid rgba(58, 134, 255, 0.35);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(37, 99, 235, 0.2);
+        border-radius: 24px;
+        max-width: 480px;
+        width: 100%;
+        padding: 28px 24px 24px;
+        color: var(--white);
+        position: relative;
+        animation: introPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes introPop {
+        from { transform: scale(0.92) translateY(15px); opacity: 0; }
+        to { transform: scale(1) translateY(0); opacity: 1; }
+    }
+
+    .intro-top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .intro-tag {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: #93C5FD;
+        background: rgba(37, 99, 235, 0.18);
+        border: 1px solid rgba(58, 134, 255, 0.3);
+        padding: 3px 10px;
+        border-radius: 20px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .intro-skip-btn {
+        background: transparent;
+        border: none;
+        color: var(--slate-400);
+        font-size: 0.78rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        padding: 4px 8px;
+    }
+
+    .intro-skip-btn:hover {
+        color: var(--white);
+    }
+
+    .intro-step {
+        display: none;
+        text-align: center;
+    }
+
+    .intro-step.active {
+        display: block;
+        animation: stepFade 0.35s ease;
+    }
+
+    @keyframes stepFade {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .intro-icon-glow {
+        width: 72px;
+        height: 72px;
+        border-radius: 20px;
+        background: rgba(37, 99, 235, 0.12);
+        border: 1px solid rgba(58, 134, 255, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 16px;
+        font-size: 1.8rem;
+        color: #60A5FA;
+        box-shadow: 0 0 25px rgba(37, 99, 235, 0.25);
+    }
+
+    .intro-step h2 {
+        font-size: 1.3rem;
+        font-weight: 800;
+        margin-bottom: 10px;
+        background: linear-gradient(90deg, #FFFFFF, #CBD5E1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .intro-step p {
+        font-size: 0.85rem;
+        color: #94A3B8;
+        line-height: 1.55;
+        margin-bottom: 24px;
+    }
+
+    .intro-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: 16px;
+    }
+
+    .intro-dots {
+        display: flex;
+        gap: 6px;
+    }
+
+    .intro-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        transition: var(--transition);
+    }
+
+    .intro-dot.active {
+        background: var(--blue-accent);
+        width: 22px;
+        border-radius: 10px;
+    }
+
+    .intro-btn-next {
+        background: var(--blue-accent);
+        color: var(--white);
+        border: none;
+        padding: 9px 20px;
+        border-radius: 30px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: var(--transition);
+        box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+    }
+
+    .intro-btn-next:hover {
+        background: #1D4ED8;
+        transform: translateY(-1px);
+    }
+
+    /* ================= INFO & MAP MODALS ================= */
+    .tactical-modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(7, 13, 30, 0.85);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+
+    .tactical-modal-backdrop.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .tactical-modal-window {
+        background: var(--navy-900);
+        border: 1px solid rgba(58, 134, 255, 0.35);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(37, 99, 235, 0.15);
+        border-radius: 22px;
+        max-width: 860px;
+        width: 100%;
+        max-height: 88vh;
+        color: var(--white);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        animation: modalScaleUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes modalScaleUp {
+        from { transform: scale(0.94); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+
+    .tactical-modal-header {
+        background: var(--navy-950);
+        padding: 18px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        flex-shrink: 0;
+    }
+
+    .tactical-modal-header h2 {
+        font-size: 1.15rem;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--white);
+    }
+
+    .tactical-modal-header h2 i {
+        color: var(--blue-accent);
+    }
+
+    .btn-close-modal {
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        color: var(--white);
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+    }
+
+    .btn-close-modal:hover {
+        background: var(--danger);
+    }
+
+    .tactical-modal-body {
+        padding: 24px;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: var(--navy-600) transparent;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .tactical-modal-body::-webkit-scrollbar {
+        width: 5px;
+    }
+    .tactical-modal-body::-webkit-scrollbar-thumb {
+        background: var(--navy-600);
+        border-radius: 10px;
+    }
+
+    /* Sector Grid for Map */
+    .map-sectors-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 14px;
+    }
+
+    .sector-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 14px;
+        padding: 14px 16px;
+        border-left: 3px solid var(--blue-accent);
+        transition: var(--transition);
+    }
+
+    .sector-card:hover {
+        background: rgba(37, 99, 235, 0.08);
+        border-color: rgba(58, 134, 255, 0.4);
+        transform: translateY(-2px);
+    }
+
+    .sector-code {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: #93C5FD;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 4px;
+    }
+
+    .sector-name {
+        font-size: 0.92rem;
+        font-weight: 800;
+        color: var(--white);
+        margin-bottom: 6px;
+    }
+
+    .sector-desc {
+        font-size: 0.78rem;
+        color: #CBD5E1;
+        line-height: 1.45;
+    }
+
+    /* Briefing Article Blocks */
+    .briefing-block {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 14px;
+        padding: 16px 18px;
+    }
+
+    .briefing-title {
+        font-size: 0.88rem;
+        font-weight: 800;
+        color: #93C5FD;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .briefing-text {
+        font-size: 0.82rem;
+        color: #CBD5E1;
+        line-height: 1.6;
+    }
+
+    /* World Map Grid */
+    .world-map-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 14px;
+    }
+
+    .world-zone-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 14px;
+        padding: 16px;
+        border-top: 3px solid #38BDF8;
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .world-zone-card:hover {
+        background: rgba(56, 189, 248, 0.08);
+        border-color: rgba(56, 189, 248, 0.4);
+        transform: translateY(-2px);
+    }
+
+    .zone-status-badge {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.65rem;
+        font-weight: 700;
+        padding: 2px 8px;
+        border-radius: 12px;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 8px;
+        align-self: flex-start;
+    }
+
+    .status-locked { background: rgba(239, 68, 68, 0.2); color: #FCA5A5; border: 1px solid rgba(239, 68, 68, 0.4); }
+    .status-active { background: rgba(16, 185, 129, 0.2); color: #6EE7B7; border: 1px solid rgba(16, 185, 129, 0.4); }
+    .status-warning { background: rgba(245, 158, 11, 0.2); color: #FDE68A; border: 1px solid rgba(245, 158, 11, 0.4); }
+
+    .world-zone-title {
+        font-size: 0.95rem;
+        font-weight: 800;
+        color: var(--white);
+        margin-bottom: 6px;
+    }
+
+    .world-zone-desc {
+        font-size: 0.78rem;
+        color: #CBD5E1;
+        line-height: 1.5;
+    }
+
+    /* ================= RESPONSIVE ADAPTABILITY ================= */
+
+    /* Desktop màn hình rộng / Siêu rộng (4 cards chuẩn) */
+    @media (min-width: 1280px) {
+        .cards-grid {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+        .card-container {
+            height: 490px;
+        }
+    }
+
+    /* Cửa sổ Desktop vừa / Laptop 13-14 inch (3 cards 1 hàng) */
+    @media (max-width: 1180px) and (min-width: 821px) {
+        .cards-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .card-container {
+            height: 460px;
+        }
+        .controls-container {
+            margin: -20px auto 20px;
+        }
+    }
+
+    /* Cửa sổ thu nhỏ / Tablet (2 cards 1 hàng) */
+    @media (max-width: 820px) and (min-width: 541px) {
+        .cards-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .card-container {
+            height: 430px;
+        }
+        header {
+            padding: 32px 16px 24px;
+        }
+        .tactical-modal-window {
+            max-height: 90vh;
+        }
+        .tactical-modal-body {
+            padding: 16px;
+        }
+    }
+
+    /* ================= CHẾ ĐỘ 540PX & MOBILE ================= */
+    @media (max-width: 540px) {
+        header {
+            padding: 24px 12px 18px;
+        }
+        
+        .badge-base {
+            font-size: 0.68rem;
+            padding: 4px 10px;
+            margin-bottom: 8px;
+        }
+
+        header h1 {
+            font-size: 1.35rem;
+            letter-spacing: -0.3px;
+        }
+
+        header p {
+            font-size: 0.78rem;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .controls-container {
+            padding: 0 10px;
+            margin: -16px auto 14px;
+        }
+
+        .search-wrapper {
+            padding: 7px 14px;
+            margin-bottom: 10px;
+            max-width: 100%;
+        }
+
+        .search-wrapper input {
+            font-size: 0.82rem;
+        }
+
+        .tactical-actions-bar {
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .btn-tactical {
+            padding: 6px 12px;
+            font-size: 0.72rem;
+            gap: 5px;
+        }
+
+        .btn-tactical i {
+            font-size: 0.82rem;
+        }
+
+        .tabs-wrapper {
+            padding: 4px 2px 8px;
+            gap: 6px;
+        }
+
+        .tab-btn {
+            padding: 5px 10px;
+            font-size: 0.72rem;
+            gap: 4px;
+        }
+
+        .tab-btn .count {
+            font-size: 0.65rem;
+            padding: 0 4px;
+        }
+
+        main {
+            padding: 0 10px 30px;
+        }
+
+        /* 2 cards 1 hàng cực gọn gàng và vừa vặn */
+        .cards-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .card-container {
+            height: 330px;
+            perspective: 1000px;
+        }
+
+        .image-overlay-top {
+            top: 6px;
+            left: 6px;
+            right: 6px;
+            gap: 4px;
+        }
+
+        .id-badge {
+            font-size: 0.58rem;
+            padding: 2px 5px;
+            border-radius: 5px;
+        }
+
+        .group-tag {
+            font-size: 0.55rem;
+            padding: 2px 6px;
+            border-radius: 12px;
+            max-width: 65%;
+        }
+
+        .card-front-info {
+            height: 27%;
+            padding: 5px 8px 6px;
+        }
+
+        .card-image-box {
+            height: 73%;
+        }
+
+        .npc-name-row {
+            gap: 4px;
+            margin-bottom: 1px;
+        }
+
+        .npc-name {
+            font-size: 0.88rem;
+            max-width: 52%;
+        }
+
+        .npc-pinyin {
+            font-size: 0.62rem;
+        }
+
+        .npc-role {
+            font-size: 0.6rem;
+            padding: 1px 5px;
+            margin-top: 1px;
+            border-radius: 4px;
+        }
+
+        .card-front-footer {
+            padding-top: 4px;
+            font-size: 0.62rem;
+        }
+
+        .meta-stat {
+            gap: 2px;
+        }
+
+        .flip-btn-hint {
+            gap: 2px;
+            font-size: 0.6rem;
+        }
+
+        /* CARD BACK - 540px */
+        .card-back-header {
+            padding: 7px 8px;
+        }
+
+        .back-title {
+            font-size: 0.72rem;
+            gap: 4px;
+        }
+
+        .back-role-badge {
+            font-size: 0.58rem;
+            padding: 1px 4px;
+        }
+
+        .card-back-body {
+            padding: 8px;
+            gap: 6px;
+        }
+
+        .back-specs-grid {
+            padding: 5px 3px;
+            gap: 2px;
+        }
+
+        .spec-box .label {
+            font-size: 0.52rem;
+            margin-bottom: 1px;
+        }
+
+        .spec-box .val {
+            font-size: 0.62rem;
+        }
+
+        .dossier-heading {
+            font-size: 0.58rem;
+            gap: 3px;
+        }
+
+        .dossier-text {
+            font-size: 0.65rem;
+            padding: 4px 6px;
+            line-height: 1.35;
+        }
+
+        .pros-cons-grid {
+            grid-template-columns: 1fr;
+            gap: 4px;
+        }
+
+        .pro-card, .con-card {
+            font-size: 0.62rem;
+            padding: 4px 6px;
+            line-height: 1.3;
+        }
+
+        .pro-card strong, .con-card strong {
+            font-size: 0.55rem;
+        }
+
+        .card-back-footer {
+            padding: 6px 8px;
+        }
+
+        .flip-back-btn {
+            font-size: 0.62rem;
+            padding: 3px 8px;
+        }
+
+        /* MODALS ON 540PX */
+        .tactical-modal-backdrop {
+            padding: 10px;
+        }
+
+        .tactical-modal-window {
+            max-height: 92vh;
+            border-radius: 16px;
+        }
+
+        .tactical-modal-header {
+            padding: 12px 16px;
+        }
+
+        .tactical-modal-header h2 {
+            font-size: 0.95rem;
+        }
+
+        .tactical-modal-body {
+            padding: 14px 12px;
+            gap: 12px;
+        }
+
+        .map-sectors-grid,
+        .world-map-grid {
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .sector-card,
+        .world-zone-card {
+            padding: 12px;
+        }
+
+        .intro-card {
+            padding: 20px 16px 16px;
+            border-radius: 18px;
+        }
+
+        .intro-icon-glow {
+            width: 56px;
+            height: 56px;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .intro-step h2 {
+            font-size: 1.1rem;
+        }
+
+        .intro-step p {
+            font-size: 0.78rem;
+            margin-bottom: 16px;
+        }
+    }
+
+    /* Màn hình siêu nhỏ < 360px */
+    @media (max-width: 360px) {
+        .cards-grid {
+            gap: 6px;
+        }
+        .card-container {
+            height: 310px;
+        }
+        .npc-name {
+            font-size: 0.8rem;
+        }
+        .npc-pinyin {
+            display: none;
+        }
+    }
+</style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <div class="badge-base">
+                <i class="fa-solid fa-shield-halved"></i> MẠT KỶ • CĂN CỨ SỐ 7
+            </div>
+            <h1>HỒ SƠ TÁC CHIẾN LỚP 12-3</h1>
+            <p>Hệ thống tra cứu dữ liệu nhân sự, tiểu đội phòng thủ sinh học và cán bộ chỉ huy căn cứ.</p>
+        </div>
+    </header>
+
+    <!-- CONTROLS -->
+    <div class="controls-container">
+        <!-- Search Bar -->
+        <div class="search-wrapper">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchInput" placeholder="Tìm tên, mã số, chức vụ...">
+        </div>
+
+<!-- TACTICAL ACTIONS: BỐI CẢNH & BẢN ĐỒ -->
+        <div class="tactical-actions-bar">
+            <button class="btn-tactical" onclick="openModal('briefingModal')">
+                <i class="fa-solid fa-file-shield"></i>
+                <span>Bối Cảnh Tập Huấn</span>
+            </button>
+            <button class="btn-tactical" onclick="openModal('mapModal')">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <span>Bản Đồ Căn Cứ</span>
+            </button>
+            <button class="btn-tactical" onclick="openModal('worldMapModal')">
+                <i class="fa-solid fa-globe"></i>
+                <span>Bản Đồ Thế Giới</span>
+            </button>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="tabs-wrapper" id="tabsContainer">
+            <!-- Dynamically generated buttons -->
+        </div>
+    </div>
+
+    <!-- MAIN CARDS GRID -->
+    <main>
+        <div class="cards-grid" id="cardsGrid">
+            <!-- Dynamically injected NPC cards -->
+        </div>
+    </main>
+
+<!-- ================= INTRO MODAL ================= -->
+    <div id="introModal">
+        <div class="intro-card">
+            
+            <div class="intro-top-bar">
+                <span class="intro-tag"><i class="fa-solid fa-terminal"></i> THIẾT LẬP QUÂN NGŨ</span>
+                <button class="intro-skip-btn" onclick="finishIntro()">Bỏ qua</button>
+            </div>
+
+            <!-- STEP 1: WELCOME & IDENTITY -->
+            <div class="intro-step active" data-step="0">
+                <div class="intro-icon-glow">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h2>XÁC THỰC DANH TÍNH</h2>
+                <p>Chào mừng bạn đã được điều động đến <strong>Căn Cứ Quân Sự Số 7</strong>. Toàn bộ hồ sơ học viên và cán bộ trực thuộc niên khóa đã được số hóa bảo mật.</p>
+            </div>
+
+            <!-- STEP 2: WORLD & DISCIPLINE -->
+            <div class="intro-step" data-step="1">
+                <div class="intro-icon-glow">
+                    <i class="fa-solid fa-bullseye"></i>
+                </div>
+                <h2>ĐIỀU LỆ ĐẠI ĐỘI</h2>
+                <p>Toàn bộ thành viên <strong>Lớp 12-3</strong> tham gia khóa huấn luyện khép kín. Quân lệnh như sơn, yêu cầu phối hợp đồng đội và tuân thủ tuyệt đối sự điều động của Ban Chỉ Huy.</p>
+            </div>
+
+            <!-- STEP 3: TUTORIAL / HOW TO USE -->
+            <div class="intro-step" data-step="2">
+                <div class="intro-icon-glow">
+                    <i class="fa-solid fa-address-card"></i>
+                </div>
+                <h2>HƯỚNG DẪN TRA CỨU</h2>
+                <p>Dùng thanh lọc để xem theo từng tiểu đội. <strong>Bấm vào thẻ bất kỳ</strong> để lật mặt sau và tra cứu hồ sơ trinh sát, năng lực sở trường và đặc điểm của từng thành viên.</p>
+            </div>
+
+            <!-- FOOTER NAVIGATION -->
+            <div class="intro-footer">
+                <div class="intro-dots">
+                    <span class="intro-dot active"></span>
+                    <span class="intro-dot"></span>
+                    <span class="intro-dot"></span>
+                </div>
+                <button class="intro-btn-next" onclick="nextIntroStep()">
+                    <span>Tiếp tục</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+<!-- ================= MODAL: BỐI CẢNH HUẤN LUYỆN ================= -->
+    <div id="briefingModal" class="tactical-modal-backdrop" onclick="closeModalOnBackdrop(event, 'briefingModal')">
+        <div class="tactical-modal-window">
+            <div class="tactical-modal-header">
+                <h2><i class="fa-solid fa-file-shield"></i> TỔNG QUAN BỐI CẢNH</h2>
+                <button class="btn-close-modal" onclick="closeModal('briefingModal')">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="tactical-modal-body">
+                
+                <div class="briefing-block">
+                    <div class="briefing-title"><i class="fa-solid fa-bullhorn"></i> MỆNH LỆNH TẬP TRUNG ĐỘT XUẤT</div>
+                    <p class="briefing-text">Trước thềm kỳ thi Cao khảo chỉ còn vài tháng, toàn bộ học sinh khối 12 của trường Trọng điểm bất ngờ nhận được lệnh điều động khẩn cấp tham gia <strong>Khóa huấn luyện Quốc phòng & Kỹ năng Sinh tồn Dự bị</strong> kéo dài 4 tuần tại Căn cứ Quân sự Số 7. Mọi phương tiện liên lạc cá nhân bị niêm phong, nội bất xuất ngoại bất nhập.</p>
+                </div>
+
+                <div class="briefing-block">
+                    <div class="briefing-title"><i class="fa-solid fa-scale-balanced"></i> THIẾT QUÂN LUẬT TẠI DOANH TRẠI</div>
+                    <p class="briefing-text">Toàn bộ 30 học sinh Lớp 12-3 được biên chế thành một phân đội dã chiến thuộc Đại đội 2 dưới quyền chỉ huy của Thượng úy Hứa Lỗi. Giờ giấc nghiêm ngặt: báo thức 05h30, chạy việt dã 5km mang tải trọng, kiểm tra quân tư trang đột xuất và thực hành tháo lắp súng trường quân dụng thật.</p>
+                </div>
+
+                <div class="briefing-block">
+                    <div class="briefing-title"><i class="fa-solid fa-triangle-exclamation"></i> SỰ BẤT THƯỜNG TRONG GIÁO TRÌNH</div>
+                    <p class="briefing-text">Khác biệt hoàn toàn với các đợt học quân sự thông thường, học sinh được tiếp xúc trực tiếp với đạn thật, bài tập phòng thủ rào chắn, sơ tán đường hầm và khóa huấn luyện sơ cứu vết thương do động vật cắn xé. Thái độ căng thẳng của các sĩ quan chỉ huy khiến bầu không khí trong lớp luôn ở mức báo động.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= MODAL: BẢN ĐỒ PHÂN KHU CĂN CỨ SỐ 7 ================= -->
+    <div id="mapModal" class="tactical-modal-backdrop" onclick="closeModalOnBackdrop(event, 'mapModal')">
+        <div class="tactical-modal-window">
+            <div class="tactical-modal-header">
+                <h2><i class="fa-solid fa-map-location-dot"></i> SƠ ĐỒ PHÂN KHU CĂN CỨ SỐ 7</h2>
+                <button class="btn-close-modal" onclick="closeModal('mapModal')">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="tactical-modal-body">
+                
+                <div class="map-sectors-grid">
+                    
+                    <!-- Sector A -->
+                    <div class="sector-card">
+                        <div class="sector-code"><i class="fa-solid fa-building"></i> PHÂN KHU A</div>
+                        <div class="sector-name">Khu Doanh Trại Lớp 12-3</div>
+                        <p class="sector-desc">Dãy nhà cấp 4 cũ gồm phòng ngủ tập thể nam/nữ, phòng tự học và sân tập trung điểm danh trước cờ mỗi sáng.</p>
+                    </div>
+
+                    <!-- Sector B -->
+                    <div class="sector-card">
+                        <div class="sector-code"><i class="fa-solid fa-crosshairs"></i> PHÂN KHU B</div>
+                        <div class="sector-name">Bãi Bắn & Thao Trường Cận Chiến</div>
+                        <p class="sector-desc">Khu vực đường chạy việt dã 5km bao quanh sườn đồi, bãi bắn bia ngắm đạn thật 100m và bãi tập vượt chướng ngại vật.</p>
+                    </div>
+
+                    <!-- Sector C -->
+                    <div class="sector-card">
+                        <div class="sector-code"><i class="fa-solid fa-tower-broadcast"></i> PHÂN KHU C</div>
+                        <div class="sector-name">Sở Chỉ Huy & Phòng Truyền Tin</div>
+                        <p class="sector-desc">Tòa nhà 2 tầng kiên cố, nơi làm việc của Thượng úy Hứa Lỗi và hệ thống radar liên lạc quân khu. Khu vực cấm học sinh.</p>
+                    </div>
+
+                    <!-- Sector D -->
+                    <div class="sector-card">
+                        <div class="sector-code"><i class="fa-solid fa-hospital"></i> PHÂN KHU D</div>
+                        <div class="sector-name">Trạm Y Tế & Phòng Cách Ly Dã Chiến</div>
+                        <p class="sector-desc">Trạm xá do Đại úy Quân y Dương Văn Khải phụ trách, luôn nồng nặc mùi cồn sát trùng và chứa kho tân dược khẩn cấp.</p>
+                    </div>
+
+                    <!-- Sector E -->
+                    <div class="sector-card">
+                        <div class="sector-code"><i class="fa-solid fa-boxes-stacked"></i> PHÂN KHU E</div>
+                        <div class="sector-name">Nhà Ăn Tập Thể & Kho Quân Nhu</div>
+                        <p class="sector-desc">Nơi cấp phát khẩu phần ăn dã chiến, chứa kho lương khô, xẻng công binh và bình lọc nước cỡ lớn của căn cứ.</p>
+                    </div>
+
+                    <!-- Sector Perimeter -->
+                    <div class="sector-card">
+                        <div class="sector-code"><i class="fa-solid fa-shield"></i> VÀNH ĐAI NGOẠI VI</div>
+                        <div class="sector-name">Hàng Rào Dây Gai & Tháp Canh Số 3</div>
+                        <p class="sector-desc">Bức tường thép cao 3m kèm lưới điện cô lập căn cứ với cánh rừng rậm rạp phía ngoài. Cấm tiếp cận sau 21h00 tối.</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+<!-- ================= MODAL: BẢN ĐỒ ĐỊA LÝ TOÀN CẢNH THẾ GIỚI ================= -->
+    <div id="worldMapModal" class="tactical-modal-backdrop" onclick="closeModalOnBackdrop(event, 'worldMapModal')">
+        <div class="tactical-modal-window">
+            <div class="tactical-modal-header">
+                <h2><i class="fa-solid fa-globe"></i> BẢN ĐỒ CHIẾN LƯỢC TOÀN KHU VỰC</h2>
+                <button class="btn-close-modal" onclick="closeModal('worldMapModal')">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="tactical-modal-body">
+                
+                <div class="world-map-grid">
+                    
+                    <!-- Vùng 1 -->
+                    <div class="world-zone-card">
+                        <div>
+                            <span class="zone-status-badge status-warning"><i class="fa-solid fa-triangle-exclamation"></i> GIỚI NGHIÊM LƯU THÔNG</span>
+                            <h3 class="world-zone-title">Đô Thị Trung Tâm (Khu 01)</h3>
+                            <p class="world-zone-desc">Đại đô thị phồn hoa, nơi tọa lạc trường học trọng điểm, Viện Kiểm sát Nhân dân, các bệnh viện trung tâm và tòa tháp tập đoàn Tiêu Thị. Toàn bộ các chốt cửa ngõ đang đặt trạm kiểm soát an ninh cấp 1.</p>
+                        </div>
+                    </div>
+
+                    <!-- Vùng 2 (Vị trí hiện tại) -->
+                    <div class="world-zone-card" style="border-top-color: var(--blue-accent);">
+                        <div>
+                            <span class="zone-status-badge status-active"><i class="fa-solid fa-location-dot"></i> ĐIỂM ĐỒN TRÚ HIỆN TẠI</span>
+                            <h3 class="world-zone-title">Căn Cứ Quân Sự Số 7 (Khu 04)</h3>
+                            <p class="world-zone-desc">Cứ điểm quân sự biệt lập nằm sâu trong thung lũng rừng thông phía Bắc. Địa hình bao bọc bởi đồi dốc tự nhiên, hàng rào điện cao áp và cách xa khu dân cư hơn 40km.</p>
+                        </div>
+                    </div>
+
+                    <!-- Vùng 3 -->
+                    <div class="world-zone-card">
+                        <div>
+                            <span class="zone-status-badge status-locked"><i class="fa-solid fa-ban"></i> KHU VỰC ĐIỂM MÙ SÓNG</span>
+                            <h3 class="world-zone-title">Dãy Núi Vân Vực (Phía Bắc)</h3>
+                            <p class="world-zone-desc">Vùng rừng rậm nguyên sinh bao quanh căn cứ với sương mù bao phủ quanh năm. Địa hình hiểm trở, nơi đặt các bài tập hành quân dã ngoại của Lớp 12-3 nhưng tuyệt đối cấm xâm nhập sâu.</p>
+                        </div>
+                    </div>
+
+                    <!-- Vùng 4 -->
+                    <div class="world-zone-card">
+                        <div>
+                            <span class="zone-status-badge status-warning"><i class="fa-solid fa-train"></i> TRỌNG ĐIỂM VẬN TẢI</span>
+                            <h3 class="world-zone-title">Hành Lang Đường Sắt & Cao Tốc Tây Nam</h3>
+                            <p class="world-zone-desc">Tuyến huyết mạch nối liền cảng hóa chất công nghiệp và trung tâm tiếp tế hậu cần quốc gia. Hiện tại các chuyến tàu dân sự đều bị tạm dừng để ưu tiên vận chuyển quân sự.</p>
+                        </div>
+                    </div>
+
+                    <!-- Vùng 5 -->
+                    <div class="world-zone-card">
+                        <div>
+                            <span class="zone-status-badge status-active"><i class="fa-solid fa-tower-broadcast"></i> TRUNG TÂM LIÊN LẠC</span>
+                            <h3 class="world-zone-title">Trạm Radar Đỉnh Thiên Sơn</h3>
+                            <p class="world-zone-desc">Điểm cao nhất khu vực với tháp truyền dẫn sóng viễn thông quân sự tầm xa, đóng vai trò duy trì mạng liên lạc nội bộ giữa Căn cứ Số 7 và Bộ Tư Lệnh Quân Khu.</p>
+                        </div>
+                    </div>
+
+                    <!-- Vùng 6 -->
+                    <div class="world-zone-card">
+                        <div>
+                            <span class="zone-status-badge status-locked"><i class="fa-solid fa-water"></i> VÙNG NGẬP NƯỚC BIỆT LẬP</span>
+                            <h3 class="world-zone-title">Khu Đầm Lầy & Trạm Hải Dương Phía Đông</h3>
+                            <p class="world-zone-desc">Khu vực cửa sông đổ ra biển, mạng lưới cống ngầm thoát nước đô thị đan xen phức tạp và trạm nghiên cứu sinh học biển biệt lập.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Tất cả thuộc về chất xám của Le Bel Astre, nghiêm cấm hành vi đạo nhái, đánh cắp ý tưởng dưới mọi hình thức.</p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC & FULL DATABASE -->
+    <script>
+        // === 1. NPC DATABASE (ĐÃ GẮN ĐƯỜNG DẪN ẢNH CỤC BỘ & BỎ HASHTAG) ===
+        // Mẹo: Đặt các ảnh vào thư mục "images/" cùng cấp file html với tên tương ứng (VD: images/120301.jpg)
+        const npcsData = [
+            // GROUP 1: CÁN BỘ LỚP
+{
+                id: "120301",
+                name: "Kỷ Bách Chu",
+                chinese: "纪柏舟 (Jì Bǎizhōu)",
+                group: "can-bo",
+                groupName: "Cán Bộ Lớp",
+                role: "Lớp trưởng / Tiểu đội trưởng",
+                image: "kbc.png",
+                age: 18,
+                birthday: "14/10 (Thiên Bình)",
+                blood: "A",
+                stats: "1m81 • 67kg",
+                icon: "fa-solid fa-user-tie",
+                appearance: "Dáng người cao ráo, mắt kính gọng bạc che ánh nhìn sắc bén. Đồng phục luôn cài kín cúc cổ áo, toát ra khí chất chuẩn mực và xa cách.",
+                personality: "Nguyên tắc, lạnh lùng và thực dụng. Ưu tiên số liệu và hiệu quả hơn cảm xúc, sẵn sàng xử lý thẳng tay bất kỳ cá nhân nào vi phạm kỷ luật chung.",
+                pros: "Tư duy chỉ huy và điều phối chiến thuật cực tốt; độ bình tĩnh cao, không bị loạn nhịp trong tình huống khẩn cấp.",
+                cons: "Cứng nhắc, thiếu linh hoạt trong giao tiếp cảm xúc, dễ kích hoạt bất đồng ý kiến trong nhóm.",
+                background: "Con nhà gia giáo ưu tú, thành tích học tập lẫn kỷ luật luôn đứng đầu danh sách toàn khối. Một hình mẫu hoàn hảo không tì vết.",
+                special: "Không ai biết Kỷ Bách Chu đang suy nghĩ gì trong đầu."
+            },
+            {
+                id: "120302",
+                name: "Tô Nhược Ninh",
+                chinese: "苏若宁 (Su Ruoning)",
+                group: "can-bo",
+                groupName: "Cán Bộ Lớp",
+                role: "Lớp phó Học tập",
+                image: "tnn.png",
+                age: 17,
+                birthday: "22/01 (Bảo Bình)",
+                blood: "AB",
+                stats: "1m62 • 46kg",
+                icon: "fa-solid fa-book-bookmark",
+                appearance: "Dáng gầy nhỏ, da trắng bợt vì cắm đầu học, tóc ngắn lộn xộn, mắt thâm quầng kinh niên, luôn cầm sổ từ vựng nhàu nát.",
+                personality: "Ám ảnh điểm số. Độc mồm, thẳng thắn, hở ra là châm chọc. Thực tế rất sợ chết nhưng chọn cách 'gồng' bằng lý trí thay vì khóc lóc.",
+                pros: "Xâu chuỗi manh mối nhanh, tư duy phân tích nhạy bén.",
+                cons: "Thể lực yếu, tự trọng quá cao không chịu nhờ giúp đỡ, dễ hoảng loạn khi bị dồn vào chân tường.",
+                background: "Bố là nghiên cứu sinh cấp cao Viện Sinh học. Sống cô độc từ nhỏ nên cảm thấy bản thân chỉ có giá trị khi đứng nhất lớp.",
+                special: "Thói quen cắn môi dưới hoặc bấm đầu bút bi tanh tách liên tục khi căng thẳng."
+            },
+            {
+                id: "120303",
+                name: "Chu Khải",
+                chinese: "周凯 (Zhou Kai)",
+                group: "can-bo",
+                groupName: "Cán Bộ Lớp",
+                role: "Lớp phó Thể dục / Tiên phong",
+                image: "ck.png",
+                age: 18,
+                birthday: "05/08 (Sư Tử)",
+                blood: "O",
+                stats: "1m86 • 82kg",
+                icon: "fa-solid fa-dumbbell",
+                appearance: "Thể hình cao lớn, cơ bắp cuồn cuộn, da ngăm đen khỏe khoắn, tóc húi cua, vết sẹo nhỏ ở đuôi lông mày trái.",
+                personality: "Thẳng như ruột ngựa, ghét tính toán chi li. Ai đụng vào người Lớp 12-3 là sẵn sàng ăn thua đủ. Không sợ đổ máu nhưng cực sợ bóng tối và ma quỷ.",
+                pros: "Sức mạnh áp đảo, phá cửa, khiêng vác chướng ngại vật cản đường cực tốt, độ lì đòn cao.",
+                cons: "Nóng nảy dễ trúng bẫy phục kích, tư duy chiến thuật kém, tiếp thu lý thuyết chậm.",
+                background: "Bố là thợ sửa xe tải nặng, mẹ bán hàng chợ đầu mối. Tính bộc trực hào sảng từ nhỏ.",
+                special: "Có thói quen bẻ khớp ngón tay kêu răng rắc."
+            },
+            {
+                id: "120304",
+                name: "Lâm Sơ Hạ",
+                chinese: "林初夏 (Lin Shuxia)",
+                group: "can-bo",
+                groupName: "Cán Bộ Lớp",
+                role: "Bí thư Chi đoàn / Cứu thương",
+                image: "lsh.png",
+                age: 18,
+                birthday: "12/04 (Bạch Dương)",
+                blood: "B",
+                stats: "1m65 • 50kg",
+                icon: "fa-solid fa-hand-holding-medical",
+                appearance: "Gương mặt thanh tú, nụ cười má lúm đồng tiền nhẹ nhàng, tóc buộc đuôi ngựa cao, luôn đeo túi cứu thương dã chiến chéo vai.",
+                personality: "Điểm tựa tinh thần xoa dịu tranh cãi. Kiên quyết không bỏ rơi đồng đội bị thương. Tự ép bản thân không khóc để tránh gây hoảng loạn cho lớp.",
+                pros: "Kỹ năng sơ cứu vết thương hở, nẹp cố định xương, cầm máu chuẩn xác. EQ cao nhận biết sụp đổ tâm lý.",
+                cons: "Dễ mủi lòng trước nỗi đau người khác, thể lực trung bình.",
+                background: "Mẹ là giáo viên dạy Văn, bố là kỹ sư đường sắt. Gia đình tràn ngập tình thương và nề nếp.",
+                special: "Luôn nhận phần việc chăm sóc người bệnh và phân phát khẩu phần ăn công bằng nhất."
+            },
+            {
+                id: "120305",
+                name: "Trần Mộc Tình",
+                chinese: "陈木晴 (Chen Muqing)",
+                group: "can-bo",
+                groupName: "Cán Bộ Lớp",
+                role: "Ủy viên Đời sống",
+                image: "tmt.png",
+                age: 18,
+                birthday: "07/07 (Cự Giải)",
+                blood: "A",
+                stats: "1m68 • 49kg",
+                icon: "fa-solid fa-gem",
+                appearance: "Xinh đẹp sắc sảo, dáng người mảnh mai uyển chuyển do học múa ba lê, dù mặc quân phục vẫn thắt eo gọn gàng.",
+                personality: "Ban đầu hay cằn nhằn về vệ sinh và mỹ phẩm, nhưng lòng tự trọng cực cao. Càng bị coi là 'bình hoa' thì càng nghiến răng chứng minh thực lực.",
+                pros: "Thân thủ dẻo dai, luồn lách leo trèo không phát ra tiếng động. Nhanh mồm đàm phán tài nguyên.",
+                cons: "Sợ bẩn, sợ côn trùng, thể lực mang vác nặng kém.",
+                background: "Bố mẹ kinh doanh chuỗi viện thẩm mỹ lớn, gia đình giàu có nuông chiều từ bé.",
+                special: "Vừa khóc nấc lên vì sợ hãi nhưng tay vẫn cầm chắc gậy đập quái vật chứ không chịu ngồi yên."
+            },
+
+            // GROUP 2: TRÙM TRƯỜNG
+            {
+                id: "120306",
+                name: "Hạ Chiêu Dã",
+                chinese: "贺昭野 (Hè Zhāoyě)",
+                group: "trum-truong",
+                groupName: "Trùm Trường",
+                role: "Học sinh Cá biệt / Sát thủ",
+                image: "hcd.png",
+                age: 18,
+                birthday: "28/11 (Nhân Mã)",
+                blood: "B",
+                stats: "1m88 • 84kg",
+                icon: "fa-solid fa-skull",
+                appearance: "Cao lớn vạm vỡ, mắt một mí, sẹo dài 3cm ở bắp tay áo, áo quân phục luôn phanh 2 cúc khoe xương quai xanh.",
+                personality: "Ngông cuồng tuyệt đối, coi kỷ luật như rác rưởi. Tuy nhiên cực khinh kẻ đâm sau lưng hoặc ức hiếp phụ nữ.",
+                pros: "Thực chiến boxing đường phố đỉnh cao, phản xạ dã thú, càng bị thương càng điên cuồng và nguy hiểm.",
+                cons: "Bất trị, không nghe mệnh lệnh tập thể, dễ tự tin thái quá rơi vào bẫy phục kích.",
+                background: "Con trai thứ của trùm bất động sản kiêm xã hội đen đã rửa tay gác kiếm. Gia đình bất hòa.",
+                special: "Nguyên tắc thép: Tuyệt đối không đánh phụ nữ do ám ảnh quá khứ gia đình."
+            },
+            {
+                id: "120307",
+                name: "Tiêu Dật Thần",
+                chinese: "萧逸琛 (Xiao Yichen)",
+                group: "trum-truong",
+                groupName: "Trùm Trường",
+                role: "Nhị thiếu gia Tính toán",
+                image: "tdt.png",
+                age: 18,
+                birthday: "19/02 (Song Ngư)",
+                blood: "AB",
+                stats: "1m82 • 70kg",
+                icon: "fa-solid fa-coins",
+                appearance: "Khuôn mặt điển trai công tử đào hoa, mắt cong như cười nhưng đáy mắt lạnh tanh, đeo đồng hồ bọc vải dù ngụy trang.",
+                personality: "Biến mọi thứ thành giao dịch mua bán. Không bao giờ trực tiếp ra tay mà giật dây người khác làm bia đỡ đạn. Luôn chuẩn bị sẵn 2 đường lui an toàn.",
+                pros: "Đầu óc tính toán tài nguyên siêu hạng, thao túng tâm lý và nắm thóp điểm yếu người khác xuất sắc.",
+                cons: "Không có lòng trung thành, cận chiến trung bình, đa nghi tuyệt đối.",
+                background: "Nhị thiếu gia Tập đoàn Dược phẩm Tiêu Thị (đơn vị tài trợ nghiên cứu sinh học bí mật).",
+                special: "Xây dựng đường dây buôn lậu thuốc lá, mì tôm, pin sạc dự phòng giá cắt cổ ngay trong trại."
+            },
+
+            // GROUP 3: PHE BẮT NẠT
+            {
+                id: "120308",
+                name: "Đặng Hạo",
+                chinese: "邓浩 (Deng Hao)",
+                group: "bat-nat",
+                groupName: "Bắt Nạt",
+                role: "Kẻ Bạo lực Học đường",
+                image: "dh.png",
+                age: 18,
+                birthday: "11/09 (Xử Nữ)",
+                blood: "O",
+                stats: "1m84 • 86kg",
+                icon: "fa-solid fa-hand-fist",
+                appearance: "Hộ pháp thô kệch, cổ rụt, mặt đầy mụn bọc, mắt đục ngầu lấm lét, dáng đi dạng háng xô đẩy ngực người khác thị uy.",
+                personality: "Chuyên trấn lột và hành hạ người yếu thế. Trước mặt kẻ mạnh như HLV hay Hạ Chiêu Dã thì khúm núm cụp đuôi. Sẵn sàng cướp đồ ăn khi loạn lạc.",
+                pros: "Sức mạnh cơ bắp thô rất lớn, ra tay tàn nhẫn không cắn rứt lương tâm.",
+                cons: "Tâm lý yếu kém khi gặp quái vật thật, ngu ngốc, sĩ diện hão.",
+                background: "Bố mẹ ly hôn, sống với người chú nát rượu hay đánh đập.",
+                special: "Kỷ lục 12 lần bị lập biên bản kỷ luật vì đánh bạn trong 2 năm học."
+            },
+            {
+                id: "120309",
+                name: "Vạn Duyên Hoa",
+                chinese: "万妍华 (Wan Yanhua)",
+                group: "bat-nat",
+                groupName: "Bắt Nạt",
+                role: "Nữ vương Bạo lực Tinh thần",
+                image: "vdh.png",
+                age: 18,
+                birthday: "16/05 (Kim Ngưu)",
+                blood: "B",
+                stats: "1m64 • 47kg",
+                icon: "fa-solid fa-masks-theater",
+                appearance: "Gương mặt ngây thơ to tròn hay ươn ướt nũng nịu, mặc áo hở vai gầy, nhưng sau lưng ánh mắt sắc như dao cạo.",
+                personality: "Bậc thầy bạo lực mạng và cô lập bạn bè. Rất giỏi rơi nước mắt để sai khiến đám con trai cơ bắp làm việc nặng hoặc đánh nhau hộ mình.",
+                pros: "Khả năng diễn kịch và nắm bắt sự phân chia quyền lực đạt mức thượng thừa.",
+                cons: "Thể lực yếu, gây chia rẽ niềm tin nội bộ trầm trọng, sợ ở một mình.",
+                background: "Bố là Giám đốc chi nhánh ngân hàng lớn, gia đình bề ngoài hào nhoáng nhưng bố mẹ ngoại tình liên tục.",
+                special: "Từng cầm đầu vụ nhốt Doãn Thiên Tầm vào nhà vệ sinh suốt đêm mùa đông."
+            },
+            {
+                id: "120310",
+                name: "Kim Văn Phúc",
+                chinese: "金文福 (Jin Wenfu)",
+                group: "bat-nat",
+                groupName: "Bắt Nạt",
+                role: "Kẻ Đê tiện Ích kỷ",
+                image: "kvp.png",
+                age: 18,
+                birthday: "03/10 (Thiên Bình)",
+                blood: "AB",
+                stats: "1m72 • 62kg",
+                icon: "fa-solid fa-box-archive",
+                appearance: "Dáng gầy còng, mắt hí thụt sâu, răng hô, đi đứng lén lút như chuột, tay luôn giữ khư khư quai ba lô giấu đồ.",
+                personality: "Chỉ quan tâm bản thân và kỳ thi đại học. Lén đào hố chôn giấu thức ăn riêng nhưng vẫn đi xin ăn. Sẵn sàng xô bạn ngã để câu giờ cho mình chạy trốn.",
+                pros: "Khả năng ẩn nấp, đào hố giấu đồ và đánh hơi nguy hiểm nhạy bén.",
+                cons: "Hèn nhát, dễ phát điên la hét khi bị dồn vào chân tường làm lộ cả đội.",
+                background: "Mẹ quét rác, bố tàn tật. Áp lực thi cử đổi đời đè nặng làm biến dạng nhân cách.",
+                special: "Luôn lẩm bẩm ngụy biện: 'Mình phải sống sót để thi đại học!'."
+            },
+            {
+                id: "120317",
+                name: "Khương Nguyệt Dao",
+                chinese: "姜月瑶 (Jiang Yueyao)",
+                group: "bat-nat",
+                groupName: "Bắt Nạt",
+                role: "Tiểu thư Ngạo mạn",
+                image: "knd.png",
+                age: 18,
+                birthday: "21/08 (Sư Tử)",
+                blood: "B",
+                stats: "1m67 • 51kg",
+                icon: "fa-solid fa-crown",
+                appearance: "Trang điểm đậm kiêu kỳ, cằm nhọn, mắt xếch, xịt nước hoa nồng nặc, thích chỉ tay vào mặt người khác chê bai.",
+                personality: "Bắt nạt công khai bằng tiền và quyền thế. Xem bạn học như người hầu. Mạt thế liên tục gào thét đòi điều trực thăng đến đón.",
+                pros: "Có lực tay và giữ thăng bằng tốt nhờ từng học cưỡi ngựa và bắn cung thể thao.",
+                cons: "Ngạo mạn, nước hoa nồng nặc là mồi thu hút quái vật khứu giác nhạy bén.",
+                background: "Con gái độc nhất của Chủ tịch Tập đoàn Xây dựng & Khai khoáng Nguyệt Dao.",
+                special: "Đoạt giải Nhì môn Bắn cung Thanh thiếu niên cấp Tỉnh."
+            },
+            {
+                id: "120318",
+                name: "Bành Gia Lương",
+                chinese: "彭嘉良 (Peng Jialiang)",
+                group: "bat-nat",
+                groupName: "Bắt Nạt",
+                role: "Chó Hùa",
+                image: "bgl.png",
+                age: 18,
+                birthday: "09/05 (Kim Ngưu)",
+                blood: "O",
+                stats: "1m74 • 58kg",
+                icon: "fa-solid fa-video",
+                appearance: "Cổ dài cằm nhọn, mắt liếc ngang dọc, tay lúc nào cũng thò túi nghịch điện thoại hoặc đồ ăn trộm được.",
+                personality: "Chuyên đứng sau Đặng Hạo cổ vũ và quay clip bạo lực đăng mạng kiếm view. Thích chọc ngoáy, đổ tội vu oan.",
+                pros: "Tốc độ chạy trốn nhanh, tài móc túi trộm vặt quân tư trang không bị bắt quả tang.",
+                cons: "Cực hèn nhát khi bị túm cổ, thói quen bật flash quay phim mạt thế dễ làm chết cả đội.",
+                background: "Bố làm báo lá cải săn tin giật gân, mẹ làm môi giới nhà đất chiêu trò.",
+                special: "Sở hữu kênh clip 'troll học đường' bẩn hơn 100.000 người theo dõi."
+            },
+
+            // GROUP 4: PHE BỊ CÔ LẬP
+            {
+                id: "120314",
+                name: "Lý Hào",
+                chinese: "李豪 (Li Hao)",
+                group: "co-lap",
+                groupName: "Bị Cô Lập",
+                role: "Ít Nói",
+                image: "lh.png",
+                age: 18,
+                birthday: "19/11 (Bọ Cạp)",
+                blood: "O",
+                stats: "1m76 • 60kg",
+                icon: "fa-solid fa-crosshairs",
+                appearance: "Tóc mái dài che nửa mặt u ám, khắp người đầy vết bầm tím do bị đánh, tay có nhiều vết chai.",
+                personality: "Nạn nhân bạo lực học đường dài hạn. Khép kín hoàn toàn. Khi cầm súng thật thì biến thành sát thủ, bắn nát đầu quái vật không chớp mắt.",
+                pros: "Tập trung xạ kích và ngắm bắn tỉa thiên bẩm, ngưỡng chịu đau phi thường.",
+                cons: "Từ chối giao tiếp.",
+                background: "Bố cờ bạc trốn nợ, mẹ làm công nhân quét rác ca đêm trong khu ổ chuột nghèo túng.",
+                special: "Cậu bạn này có vẻ mờ nhạt trong lớp..."
+            },
+            {
+                id: "120316",
+                name: "Doãn Thiên Tầm",
+                chinese: "尹千寻 (Yin Qianxun)",
+                group: "co-lap",
+                groupName: "Bị Cô Lập",
+                role: "Trinh sát Tĩnh lặng",
+                image: "dtt.png",
+                age: 18,
+                birthday: "30/08 (Xử Nữ)",
+                blood: "A",
+                stats: "1m60 • 43kg",
+                icon: "fa-solid fa-ghost",
+                appearance: "Gầy gò xanh xao, tóc dài che má, kéo khóa kín cổ và trùm kín tay giấu vết cào cấu stress, bước đi không tiếng động.",
+                personality: "Nạn nhân tẩy chay sau tin đồn ác ý. Sợ đám đông. Nhờ quen ẩn nấp trong bóng tối, thính giác và khứu giác phát triển vượt trội.",
+                pros: "Chạy nhanh, quan sát tốt.",
+                cons: "Thể chất suy nhược dễ ngất, mắc hội chứng sợ không gian kín, áp lực khi bị hối thúc.",
+                background: "Mẹ bỏ đi, bố là tài xế xe tải vắng nhà quanh năm. Sống lầm lũi vẽ tranh thuê.",
+                special: "Sẵn sàng hy sinh tính mạng bảo vệ người duy nhất chịu đối xử bình đẳng với cô."
+            },
+
+            // GROUP 5: PHE BÁNH BÈO
+            {
+                id: "120311",
+                name: "Bạch Giai Giai",
+                chinese: "白佳佳 (Bai Jiajia)",
+                group: "banh-beo",
+                groupName: "Bánh Bèo",
+                role: "Gánh nặng Âm thanh",
+                image: "bgg.png",
+                age: 18,
+                birthday: "24/09 (Thiên Bình)",
+                blood: "O",
+                stats: "1m58 • 48kg",
+                icon: "fa-solid fa-volume-high",
+                appearance: "Mặt tròn bầu bĩnh, mắt ngấn nước, tóc 2 chùm nhỏ, mặc áo rộng như bơi trong áo, đi đứng hay vấp dây giày.",
+                personality: "Đụng tí là khóc, gặp biến cố là hét tần số cực cao làm lộ vị trí cả nhóm. Vẫn nghĩ đây chỉ là đợt cắm trại hè khắc nghiệt.",
+                pros: "Lương thiện không tâm địa hại ai, tiếng hét thỉnh thoảng đánh lạc hướng quái vật vô tình.",
+                cons: "Tiếng la hét là hiểm họa số 1, thể lực yếu nhất lớp, dễ cướp cò súng vì run rẩy.",
+                background: "Con gái út trong nhà có 3 anh trai cưng chiều như công chúa từ bé.",
+                special: "Túi áo luôn giấu đầy kẹo dẻo và sẵn sàng chia sẻ nếu được dỗ dành."
+            },
+            {
+                id: "120312",
+                name: "Hứa Thiếu Kỳ",
+                chinese: "许少琪 (Xu Shaoqi)",
+                group: "banh-beo",
+                groupName: "Bánh Bèo",
+                role: "Nữ hoàng Lý do",
+                image: "htk.png",
+                age: 18,
+                birthday: "14/02 (Bảo Bình)",
+                blood: "AB",
+                stats: "1m63 • 44kg",
+                icon: "fa-solid fa-head-side-cough",
+                appearance: "Da trắng bợt, mắt lờ đờ, luôn quấn khăn đeo khẩu trang, túi lỉnh kỉnh dầu gió, xịt hen suyễn, thuốc dị ứng.",
+                personality: "Có hàng tá lý do sức khỏe để xin nghỉ. Thấy máu hay xác chết là nôn mửa rồi lăn ra ngất xỉu. Thích thở dài làm nản lòng người khác.",
+                pros: "Am hiểu tên các loại thuốc tân dược, công dụng kháng sinh và liều dùng.",
+                cons: "Không mang vác quá 3kg, dễ ngất xỉu đột ngột giữa trận chiến.",
+                background: "Bố mẹ là chủ chuỗi nhà thuốc lớn, nuôi con trong môi trường vô trùng từ nhỏ.",
+                special: "Học lực Hóa học xuất sắc, giữ kỷ lục xin nghỉ ốm nhiều nhất trường."
+            },
+            {
+                id: "120313",
+                name: "Diệp Tiểu Nguyên",
+                chinese: "叶小圆 (Ye Xiaoyuan)",
+                group: "banh-beo",
+                groupName: "Bánh Bèo",
+                role: "Thánh Vụng Về",
+                image: "dtn.png",
+                age: 18,
+                birthday: "17/12 (Nhân Mã)",
+                blood: "A",
+                stats: "1m55 • 46kg",
+                icon: "fa-solid fa-person-falling",
+                appearance: "Lùn nhỏ, kính cận dày cộm hay trượt trên mũi, tay hay bấu gấu áo, đụng vào vật dụng gì là làm rơi vỡ cái đó.",
+                personality: "Khi hoảng sợ não bị 'đơ' đứng trơ như khúc gỗ. Rất tự ti vì sự vô dụng của mình nhưng ai sai gì cũng cần mẫn làm theo.",
+                pros: "Hiền lành, chăm chỉ quét dọn, có hoa tay may vá sửa chữa quân trang rách.",
+                cons: "Thường làm rơi băng đạn dự phòng hoặc quên mở khóa an toàn súng trong lúc nguy cấp.",
+                background: "Bố làm thợ may, mẹ nội trợ. Tự ti vì thường xuyên bị bạn bè trêu chọc vụng về.",
+                special: "Thành viên cần mẫn nhất của Đội Hậu cần Tình nguyện."
+            },
+
+            // GROUP 6: VẬN ĐỘNG VIÊN
+            {
+                id: "120319",
+                name: "Triệu Kính Đình",
+                chinese: "赵敬庭 (Zhao Jingting)",
+                group: "vdv",
+                groupName: "Vận Động Viên",
+                role: "Kiện tướng Bắn súng Thể thao",
+                image: "tkd.png",
+                age: 18,
+                birthday: "15/01 (Ma Kết)",
+                blood: "A",
+                stats: "1m83 • 72kg",
+                icon: "fa-solid fa-bullseye",
+                appearance: "Lưng thẳng tắp, mắt sâu thẳm tĩnh lặng như hồ nước, ngón trỏ có vết chai dày đặc trưng do nhiều năm giữ cò súng.",
+                personality: "Nói ít làm nhiều, có khả năng ép nhịp tim hạ thấp khi ngắm bắn. Thần kinh thép không bị phân tâm bởi tiếng ồn.",
+                pros: "Xạ kích cự ly 100-300m gần như tuyệt đối, tính toán sức gió và độ giật hoàn hảo.",
+                cons: "Thói quen ngắm nắn nót theo tiêu chuẩn thể thao, ban đầu hơi chậm khi quái vật áp sát quá nhanh.",
+                background: "Gia đình 3 đời xạ thủ, ông nội là lính bắn tỉa, bố là Huấn luyện viên Quốc gia.",
+                special: "Huy chương Vàng Đại hội Thể thao Toàn quốc lứa tuổi Thanh thiếu niên."
+            },
+            {
+                id: "120320",
+                name: "Tô Hiếu Dĩ",
+                chinese: "苏晓苡 (Su Xiaoyi)",
+                group: "vdv",
+                groupName: "Vận Động Viên",
+                role: "VĐV Điền kinh / Mồi nhử tốc độ",
+                image: "thd.png",
+                age: 18,
+                birthday: "29/07 (Sư Tử)",
+                blood: "O",
+                stats: "1m73 • 56kg",
+                icon: "fa-solid fa-person-running",
+                appearance: "Da bánh mật, cơ bụng số 11, tóc tém cá tính, luôn đeo băng đô thể thao thấm mồ hôi trên trán.",
+                personality: "Hiếu thắng, thích thi chạy với nam sinh. Sẵn sàng nhận nhiệm vụ làm 'mồi nhử' chạy trước đàn quái vật để mở đường cho lớp.",
+                pros: "Tốc độ nước rút và leo rào vượt chướng ngại vật đứng đầu toàn trường.",
+                cons: "Tiêu hao calo cực nhanh mau đói, dễ bị chuột rút nếu thiếu nước, nóng nảy.",
+                background: "Bố mẹ đều là cựu vận động viên điền kinh cấp tỉnh.",
+                special: "Kỷ lục chạy 100m nữ toàn tỉnh với thành tích 11 giây 52."
+            },
+            {
+                id: "120321",
+                name: "Đào Dật Phong",
+                chinese: "陶逸峰 (Tao Yifeng)",
+                group: "vdv",
+                groupName: "Vận Động Viên",
+                role: "Đai đen Judo / Chắn cửa",
+                image: "ddp.png",
+                age: 18,
+                birthday: "04/12 (Nhân Mã)",
+                blood: "B",
+                stats: "1m89 • 95kg",
+                icon: "fa-solid fa-shield",
+                appearance: "Vạm vỡ như gấu xám, bắp tay to như đùi người khác, mặt chữ điền phúc hậu cương trực.",
+                personality: "Đôn hậu, trượng nghĩa, luôn tự nhận vác đạn nặng và chặn cửa sau cùng. Tinh thần võ sĩ đạo bảo vệ kẻ yếu.",
+                pros: "Lực đẩy và sức mạnh cơ bắp tuyệt đối, quật ngã và bẻ khớp quái vật tay đôi cực mạnh.",
+                cons: "Thân hình to lớn luồn lách kém linh hoạt, tốn nhiều lương thực.",
+                background: "Gia đình mở võ đường Judo truyền thống, rèn võ đức từ nhỏ.",
+                special: "Vô địch Judo Thanh thiếu niên toàn quốc hạng cân 90kg+ 2 năm liền."
+            },
+            {
+                id: "120322",
+                name: "Đường Uyển Trinh",
+                chinese: "唐宛凝 (Tang Wanning)",
+                group: "vdv",
+                groupName: "Vận Động Viên",
+                role: "Kiện tướng Đấu kiếm / Lưỡi lê",
+                image: "dut.png",
+                age: 18,
+                birthday: "18/09 (Xử Nữ)",
+                blood: "A",
+                stats: "1m70 • 52kg",
+                icon: "fa-solid fa-wand-magic-sparkles",
+                appearance: "Mảnh khảnh săn chắc, mắt phượng sắc bén, tóc đuôi ngựa thấp, phong thái quý phái lạnh lùng.",
+                personality: "Sắc sảo, chuẩn xác từng milimet. Biến lưỡi lê đầu súng hoặc thanh sắt mài nhọn thành vũ khí đâm xuyên cuống họng quái vật.",
+                pros: "Tốc độ ra đòn tay và bộ pháp né tránh cự ly ngắn nhanh nhất, cực mạnh trong hành lang hẹp.",
+                cons: "Lực cản va đập trực diện kém hơn nhóm vật, ghét bị máu văng bẩn người.",
+                background: "Bố là thẩm phán tòa án tối cao, mẹ là nghệ sĩ dương cầm danh tiếng.",
+                special: "Huy chương Vàng giải Vô địch Đấu kiếm Thanh thiếu niên Châu Á."
+            },
+            {
+                id: "120323",
+                name: "Lục Thiên Hàng",
+                chinese: "陆千航 (Lu Qianhang)",
+                group: "vdv",
+                groupName: "Vận Động Viên",
+                role: "Kình ngư / Dung tích phổi 6500ml",
+                image: "lth.png",
+                age: 18,
+                birthday: "10/06 (Song Tử)",
+                blood: "AB",
+                stats: "1m85 • 76kg",
+                icon: "fa-solid fa-water",
+                appearance: "Thân hình chữ V hoàn hảo, eo thon vai rộng, da rám nắng khỏe khoắn, nụ cười bất cần đời.",
+                personality: "Tếu táo, phóng khoáng. Có khả năng nhịn thở 4-5 phút dưới nước hoặc trong vùng khói độc/khí gas mạt thế.",
+                pros: "Cứu tinh tuyệt đối khi băng qua cống ngầm, sông sâu hoặc vùng ngập lụt.",
+                cons: "Tác chiến cận chiến trên cạn trung bình, hơi chủ quan với thủy quái.",
+                background: "Bố mẹ làm việc tại Viện Nghiên cứu Hải dương học Quốc gia ven biển.",
+                special: "Kỷ lục quốc gia lứa tuổi U18 cự ly 200m bơi bướm."
+            },
+
+            // GROUP 7: CÂY HÀI
+            {
+                id: "120324",
+                name: "Tạ Yến Tranh",
+                chinese: "谢晏峥 (Xie Yanzheng)",
+                group: "cay-hai",
+                groupName: "Cây Hài Nghịch Ngu",
+                role: "Chúa tể Hóng hớt & Giỡn lố",
+                image: "tyt.png",
+                age: 18,
+                birthday: "11/11 (Bọ Cạp)",
+                blood: "B",
+                stats: "1m78 • 65kg",
+                icon: "fa-solid fa-face-laugh-squint",
+                appearance: "Dong dỏng cao gầy, mặt sáng sủa láu cá cười cợt nhả, túi áo luôn phồng to giấu bật lửa, dây thun và đồ ăn vặt.",
+                personality: "Miệng nói 200% công suất không biết mệt. Vừa chạy trối chết vừa cà khịa quái vật. Liều thuốc trợ tim giúp lớp không bị trầm cảm.",
+                pros: "Xua tan căng thẳng, đầu óc ứng biến bốc phét đánh lạc hướng đỉnh cao, trọng tình nghĩa.",
+                cons: "Miệng đi trước não hay làm lộ chỗ trốn, hay thử nghiệm trò nghịch dại phản tác dụng.",
+                background: "Bố mẹ mở chuỗi quán bar và phòng trà ca nhạc lớn trong thành phố.",
+                special: "Khoét ruột từ điển và giấu đồ cấm vào đáy bình giữ nhiệt 2 lớp qua mắt HLV."
+            },
+            {
+                id: "120325",
+                name: "Tiêu Thiếu Bằng",
+                chinese: "肖少鹏 (Xiao Shaopeng)",
+                group: "cay-hai",
+                groupName: "Cây Hài Nghịch Ngu",
+                role: "Bằng Béo / Trâu Nước",
+                image: "ttb.png",
+                age: 18,
+                birthday: "01/04 (Bạch Dương)",
+                blood: "O",
+                stats: "1m75 • 78kg",
+                icon: "fa-solid fa-drumstick-bite",
+                appearance: "Béo tròn mặt bánh bao nhai nhóp nhép, mắt híp meme, chạy thở hồng hộc vừa la hét khẩu hiệu vô nghĩa.",
+                personality: "Cặp bài trùng với Tạ Yến Tranh. Đói là IQ về 0. Mang theo bùa bát quái trừ tà trước khi nhớ ra mình cầm súng. Bạn bị nạn là lao vào cứu ngay.",
+                pros: "Lớp mỡ đệm chống va đập, sức đẩy xe và chặn cửa rất khỏe, những pha xử lý ngớ ngẩn mà hiệu quả.",
+                cons: "Chỉ số xui xẻo cao hay giẫm phải cành cây gãy, ăn tốn lương thực khẩn cấp.",
+                background: "Bố mở chuỗi nhà hàng lẩu Tứ Xuyên, mẹ dạy nấu ăn.",
+                special: "Từng ném nhầm bình cứu hỏa vào miệng quái vật làm nó nghẹn chết."
+            },
+
+            // GROUP 8: GÀ BÔNG
+            {
+                id: "120326",
+                name: "Hạ Kính Trầm",
+                chinese: "贺敬沉 (He Jingchen)",
+                group: "ga-bong",
+                groupName: "Gà Bông Yêu Đương",
+                role: "Học trưởng Ôn nhu / Cuồng người yêu",
+                image: "hkt.png",
+                age: 18,
+                birthday: "20/05 (Kim Ngưu)",
+                blood: "A",
+                stats: "1m82 • 70kg",
+                icon: "fa-solid fa-heart",
+                appearance: "Điển trai dịu dàng, sống mũi cao, ánh mắt cưng chiều bạn gái Bạch Tử Hàn, luôn đứng che nắng chỉnh mũ cho người yêu.",
+                personality: "Ôn hòa với cả thế giới nhưng tàn nhẫn với kẻ đụng vào bạn gái. Có thể 1 mình cầm súng xông vào quái vật tìm thuốc hạ sốt cho người yêu.",
+                pros: "Tâm lý chiến cực vững khi có người yêu, ngắm bắn tiến bộ vượt bậc vì động lực bảo vệ.",
+                cons: "Mù quáng vì tình, dễ bị kẻ địch bắt thóp điểm yếu bắt giữ Tử Hàn.",
+                background: "Bố mẹ là kiến trúc sư quy hoạch đô thị. Thanh mai trúc mã với Bạch Tử Hàn từ mẫu giáo.",
+                special: "Xưng hô 'Anh - Em' ngọt ngào với Bạch Tử Hàn bất kể bom đạn."
+            },
+            {
+                id: "120327",
+                name: "Bạch Tử Hàn",
+                chinese: "白梓涵 (Bai Zihan)",
+                group: "ga-bong",
+                groupName: "Gà Bông Yêu Đương",
+                role: "Bạn gái dịu dàng",
+                image: "bth.png",
+                age: 18,
+                birthday: "12/09 (Xử Nữ)",
+                blood: "O",
+                stats: "1m63 • 46kg",
+                icon: "fa-solid fa-feather-pointed",
+                appearance: "Thanh thuần như sương mai, mắt long lanh, tóc buộc nửa đầu, luôn nắm chặt tay Hạ Kính Trầm.",
+                personality: "Là chiếc phanh tâm lý giúp Kính Trầm không nổi điên. Ngoan ngoãn nhưng khi bạn trai bị quái vật đè thì dám cầm gậy sắt liều mạng lao vào cứu.",
+                pros: "Quản lý nhu yếu phẩm, may vá vết thương khéo léo, giữ vững tinh thần cho đội tiên phong.",
+                cons: "Thể lực yếu đuối dễ cảm sốt, phụ thuộc nhiều vào Hạ Kính Trầm.",
+                background: "Mẹ là giảng viên Nhạc viện, bố là chủ phòng tranh nghệ thuật.",
+                special: "Sẵn sàng tự sát nếu bị cắn để bạn trai không phải đau lòng nhìn mình biến đổi."
+            },
+            {
+                id: "120328",
+                name: "Trì Tấn",
+                chinese: "迟晋 (Chi Jin)",
+                group: "ga-bong",
+                groupName: "Gà Bông Yêu Đương",
+                role: "Oan Gia Đột Kích / Tsundere",
+                image: "tt.png",
+                age: 18,
+                birthday: "17/08 (Sư Tử)",
+                blood: "B",
+                stats: "1m84 • 76kg",
+                icon: "fa-solid fa-fire",
+                appearance: "Mày kiếm mắt sáng hay cau có cộc cằn, mặc áo ba lỗ khoác hờ quân phục dã chiến cơ bắp.",
+                personality: "Khẩu xà tâm phật, mồm mắng Ninh Thư Diêu chậm như rùa nhưng tay đã giật ba lô vác hộ. Quái vật tới là lấy thân mình chắn ôm chặt người yêu.",
+                pros: "Cận chiến bằng rìu cứu hỏa cực máu lửa, lì đòn kéo bạn gái nhảy tường siêu nhanh.",
+                cons: "Miệng cay độc dễ làm bạn gái khóc, nóng tính khi thấy người yêu gặp nguy.",
+                background: "Bố làm chủ chuỗi phòng gym/boxing, tự lập từ nhỏ.",
+                special: "Cặp đôi oan gia xưng hô 'Tôi - Cậu', cãi nhau 24/7 nhưng phối hợp đẫm máu ăn ý."
+            },
+            {
+                id: "120329",
+                name: "Ninh Thư Diêu",
+                chinese: "宁舒窈 (Ning Shuyao)",
+                group: "ga-bong",
+                groupName: "Gà Bông Yêu Đương",
+                role: "Thiếu Nữ Bướng Bỉnh",
+                image: "ntd.png",
+                age: 18,
+                birthday: "03/03 (Song Ngư)",
+                blood: "AB",
+                stats: "1m66 • 51kg",
+                icon: "fa-solid fa-shield-cat",
+                appearance: "Mắt mèo đen láy sắc sảo, tóc ngắn uốn cụp ngang cằm, tác phong đanh thép hai tay cầm chắc súng.",
+                personality: "Kiên quyết không làm gánh nặng, nỗ lực bắn súng để đứng ngang hàng Trì Tấn. Hay cãi tay đôi nhưng khi Trì Tấn bị thương là vừa khóc vừa băng bó.",
+                pros: "Gan dạ, phản xạ tiểu liên nhanh nhẹn, bọc lót điểm mù cho Trì Tấn hoàn hảo.",
+                cons: "Quá bướng bỉnh và tự ái cao, dễ mất bình tĩnh nếu Trì Tấn liều mạng một mình.",
+                background: "Bố là cảnh sát hình sự kỳ cựu (dạy cô tự vệ từ nhỏ), mẹ là kiểm sát viên.",
+                special: "Giải Ba môn Bắn súng Laser Thanh thiếu niên cấp Quận."
+            },
+
+            // GROUP 9: BAN CHỈ HUY & GIÁO VIÊN
+            {
+                id: "HLV-01",
+                name: "Hứa Lỗi",
+                chinese: "许磊 (Xu Lei)",
+                group: "chi-huy",
+                groupName: "Ban Chỉ Huy & GV",
+                role: "Đại đội trưởng / Thượng úy Tác chiến",
+                image: "hl.png",
+                age: 28,
+                birthday: "16/11 (Bọ Cạp)",
+                blood: "A",
+                stats: "1m85 • 80kg",
+                icon: "fa-solid fa-gun",
+                appearance: "Quân nhân đặc nhiệm chuẩn mực, sống mũi cao thẳng, mắt vằn tia đỏ vì thức trắng chỉ huy, bao súng lục Type 92 bên hông.",
+                personality: "Bên ngoài tàn nhẫn ép học sinh tập đến kiệt sức vì biết ngoài kia quái vật không tha ai. Dằn vặt vì biến học trò thành bia đỡ đạn. Luôn đứng mũi chịu sào.",
+                pros: "Bậc thầy tác chiến chống bạo động và sinh vật đột biến, chỉ huy giữ kỷ luật tuyệt đối.",
+                cons: "Quá nặng gánh trách nhiệm, tự nhận lỗi thương vong, ăn nói cứng nhắc ít giải thích.",
+                background: "Huân chương Chiến công Hạng Nhì, Xạ thủ Bắn tỉa Cấp Quân khu.",
+                special: "Tuyệt đối không bỏ rơi học sinh khi chưa có lệnh rút lui cuối cùng."
+            },
+            {
+                id: "HLV-02",
+                name: "Viên Bân",
+                chinese: "袁彬 (Yuan Bin)",
+                group: "chi-huy",
+                groupName: "Ban Chỉ Huy & GV",
+                role: "Trung đội phó / Thượng sĩ Kỹ thuật",
+                image: "vb.png",
+                age: 24,
+                birthday: "08/04 (Bạch Dương)",
+                blood: "O",
+                stats: "1m80 • 75kg",
+                icon: "fa-solid fa-screwdriver-wrench",
+                appearance: "Khuôn mặt tươi sáng, nụ cười răng khểnh, da rám nắng, đội mũ dã chiến hơi lệch, xắn tay áo quân phục.",
+                personality: "Người hòa giải của căn cứ. Hay đùa và lén đưa nước uống cho học sinh bị phạt. Trợ thủ đắc lực xông vào điểm nóng cứu người cùng Hứa Lỗi.",
+                pros: "Tháo lắp sửa kẹt đạn trong chớp mắt, truyền đạt kỹ thuật dễ hiểu, lái mọi xe quân sự.",
+                cons: "Tuổi trẻ dễ mềm lòng trước giọt nước mắt van xin của học trò.",
+                background: "Chiến sĩ Thi đua Toàn quân 2 năm liền, Trinh sát Đặc nhiệm Quân khu.",
+                special: "Thường xuyên chơi bóng rổ và chia bánh ngọt cho đám học sinh lúc giải lao."
+            },
+            {
+                id: "GV-03",
+                name: "Lâm Nhược San",
+                chinese: "林若珊 (Lin Ruoshan)",
+                group: "chi-huy",
+                groupName: "Ban Chỉ Huy & GV",
+                role: "Giáo viên Chủ nhiệm / Dạy Văn",
+                image: "lns.png",
+                age: 32,
+                birthday: "25/09 (Thiên Bình)",
+                blood: "A",
+                stats: "1m66 • 52kg",
+                icon: "fa-solid fa-chalkboard-user",
+                appearance: "Đằm thắm, kính gọng tròn mảnh, tóc buộc lỏng sau gáy, luôn cầm sổ điểm danh và danh bạ phụ huynh.",
+                personality: "Yêu thương 30 học trò như con. Dám lớn tiếng cãi tay đôi với Hứa Lỗi đòi quyền lợi đồ ăn cho học sinh. Tay không vũ khí vẫn dám dang tay chắn cửa trước quái vật.",
+                pros: "Tiếng nói uy tín tuyệt đối với học sinh, xoa dịu hoảng loạn, nhớ rõ từng bệnh lý của trò.",
+                cons: "Thể lực phụ nữ bàn giấy, không biết dùng súng, ban đầu quá tin vào cứu trợ chính phủ.",
+                background: "Giáo viên Dạy giỏi Cấp Tỉnh, có con gái 4 tuổi đang mất liên lạc ở quê.",
+                special: "Lời nhắc nhở: 'Dù mạt thế xảy ra, các em tuyệt đối không được đánh mất nhân tính!'."
+            },
+            {
+                id: "QY-04",
+                name: "Dương Văn Khải",
+                chinese: "杨文楷 (Yang Wenkai)",
+                group: "chi-huy",
+                groupName: "Ban Chỉ Huy & GV",
+                role: "Trưởng Trạm Y tế / Đại úy Quân y",
+                image: "dvk.png",
+                age: 35,
+                birthday: "03/01 (Ma Kết)",
+                blood: "AB",
+                stats: "1m78 • 68kg",
+                icon: "fa-solid fa-syringe",
+                appearance: "Áo blouse trắng khoác ngoài quân phục bạc màu dính máu, mắt thâm quầng râu ria ít cạo, mùi cồn sát khuẩn nồng nặc.",
+                personality: "Coi số liệu y khoa là trên hết, không nói lời an ủi giả tạo. Kẻ gác cổng kiểm dịch tàn nhẫn: Ai bị cào nhiễm khuẩn là khóa phòng cách ly ngay lập tức.",
+                pros: "Phẫu thuật ngoại khoa gắp đạn và khâu vết cắn thượng thừa, hiểu rõ điểm yếu sinh học quái vật.",
+                cons: "Ăn nói cay độc, nghiện thuốc lá nặng, dễ xung đột đạo đức với cô giáo Lâm.",
+                background: "Viện Y học Quân sự Trung ương, chuyên gia nghiên cứu dịch tễ học.",
+                special: "Người hướng dẫn chuyên sâu cho Lâm Sơ Hạ và Tô Nhược Ninh về cầm máu động mạch."
+            }
+        ];
+
+        // === 2. GROUPS CONFIGURATION ===
+        const groupsConfig = [
+            { id: "all", name: "Tất Cả", icon: "fa-solid fa-users" },
+            { id: "can-bo", name: "Cán Bộ Lớp", icon: "fa-solid fa-user-tie" },
+            { id: "trum-truong", name: "Trùm Trường", icon: "fa-solid fa-skull" },
+            { id: "bat-nat", name: "Bắt Nạt & Phá", icon: "fa-solid fa-hand-fist" },
+            { id: "co-lap", name: "Bị Cô Lập", icon: "fa-solid fa-ghost" },
+            { id: "banh-beo", name: "Bánh Bèo Mít Ướt", icon: "fa-solid fa-volume-high" },
+            { id: "vdv", name: "Vận Động Viên", icon: "fa-solid fa-person-running" },
+            { id: "cay-hai", name: "Cây Hài Nghịch Ngu", icon: "fa-solid fa-face-laugh-squint" },
+            { id: "ga-bong", name: "Gà Bông Yêu Đương", icon: "fa-solid fa-heart" },
+            { id: "chi-huy", name: "Chỉ Huy & GV", icon: "fa-solid fa-shield-halved" }
+        ];
+
+        let currentFilter = "all";
+        let searchQuery = "";
+
+        // === 3. RENDER TABS ===
+        function renderTabs() {
+            const tabsContainer = document.getElementById("tabsContainer");
+            tabsContainer.innerHTML = groupsConfig.map(grp => {
+                const count = grp.id === "all" 
+                    ? npcsData.length 
+                    : npcsData.filter(n => n.group === grp.id).length;
+
+                return `
+                    <button class="tab-btn ${grp.id === currentFilter ? 'active' : ''}" onclick="setFilter('${grp.id}')">
+                        <i class="${grp.icon}"></i>
+                        ${grp.name}
+                        <span class="count">${count}</span>
+                    </button>
+                `;
+            }).join("");
+        }
+
+        // === 4. RENDER CARDS (MẶT TRƯỚC ẢNH LỚN - MẶT SAU CHỈ CÓ INFO) ===
+        function renderCards() {
+            const cardsGrid = document.getElementById("cardsGrid");
+            
+            // Filter logic
+            const filteredData = npcsData.filter(npc => {
+                const matchGroup = (currentFilter === "all" || npc.group === currentFilter);
+                const query = searchQuery.toLowerCase().trim();
+                const matchSearch = query === "" || 
+                    npc.name.toLowerCase().includes(query) ||
+                    npc.chinese.toLowerCase().includes(query) ||
+                    npc.id.toLowerCase().includes(query) ||
+                    npc.role.toLowerCase().includes(query);
+
+                return matchGroup && matchSearch;
+            });
+
+            if (filteredData.length === 0) {
+                cardsGrid.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fa-solid fa-folder-open"></i>
+                        <h3>Không tìm thấy nhân sự phù hợp</h3>
+                        <p>Vui lòng thử tìm kiếm với từ khóa khác hoặc chọn nhóm khác.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            cardsGrid.innerHTML = filteredData.map(npc => {
+                return `
+                    <div class="card-container" onclick="toggleCardFlip(this, event)">
+                        <div class="card-inner">
+                            
+                            <!-- ================= CARD FRONT (ẢNH CHIẾM ĐA SỐ) ================= -->
+                            <div class="card-face card-front">
+                                <div class="card-image-box">
+                                    <div class="image-overlay-top">
+                                        <span class="id-badge">ID: ${npc.id}</span>
+                                        <span class="group-tag group-${npc.group}">${npc.groupName}</span>
+                                    </div>
+                                    
+                                    <!-- Hiển thị ảnh cục bộ; nếu chưa có ảnh sẽ tự fallback sang icon đại diện -->
+                                    <img src="${npc.image}" alt="${npc.name}" class="card-img" 
+                                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    
+                                    <div class="avatar-fallback" style="display: none;">
+                                        <i class="${npc.icon}"></i>
+                                        <span>[ ${npc.image} ]</span>
+                                    </div>
+                                </div>
+
+                                <div class="card-front-info">
+                                    <div class="npc-headline">
+                                        <div class="npc-name-row">
+                                            <h2 class="npc-name">${npc.name}</h2>
+                                            <span class="npc-pinyin">${npc.chinese}</span>
+                                        </div>
+                                        <span class="npc-role">${npc.role}</span>
+                                    </div>
+
+                                    <div class="card-front-footer">
+                                        <div class="meta-stat">
+                                            <i class="fa-solid fa-ruler-combined"></i>
+                                            <span>${npc.stats}</span>
+                                        </div>
+                                        <div class="flip-btn-hint">
+                                            <span>Hồ sơ chi tiết</span>
+                                            <i class="fa-solid fa-arrow-rotate-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ================= CARD BACK (CHỈ CÓ THÔNG TIN HỒ SƠ) ================= -->
+                            <div class="card-face card-back">
+                                <div class="card-back-header">
+                                    <div class="back-title">
+                                        <i class="${npc.icon}"></i>
+                                        <span>HỒ SƠ: ${npc.name}</span>
+                                    </div>
+                                    <span class="back-role-badge">${npc.id}</span>
+                                </div>
+
+                                <div class="card-back-body" onclick="event.stopPropagation()">
+                                    
+                                    <!-- Specs Grid -->
+                                    <div class="back-specs-grid">
+                                        <div class="spec-box">
+                                            <div class="label">Tuổi</div>
+                                            <div class="val">${npc.age}</div>
+                                        </div>
+                                        <div class="spec-box">
+                                            <div class="label">Nhóm máu</div>
+                                            <div class="val">${npc.blood}</div>
+                                        </div>
+                                        <div class="spec-box">
+                                            <div class="label">Thể trạng</div>
+                                            <div class="val">${npc.stats.split('•')[0]}</div>
+                                        </div>
+                                        <div class="spec-box">
+                                            <div class="label">Cân nặng</div>
+                                            <div class="val">${npc.stats.split('•')[1] || ''}</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="dossier-section">
+                                        <div class="dossier-heading">
+                                            <i class="fa-solid fa-eye"></i> Ngoại Hình & Tác Phong
+                                        </div>
+                                        <p class="dossier-text">${npc.appearance}</p>
+                                    </div>
+
+                                    <div class="dossier-section">
+                                        <div class="dossier-heading">
+                                            <i class="fa-solid fa-brain"></i> Tâm Lý & Tính Cách
+                                        </div>
+                                        <p class="dossier-text">${npc.personality}</p>
+                                    </div>
+
+                                    <div class="pros-cons-grid">
+                                        <div class="pro-card">
+                                            <strong><i class="fa-solid fa-circle-check"></i> Ưu điểm</strong>
+                                            ${npc.pros}
+                                        </div>
+                                        <div class="con-card">
+                                            <strong><i class="fa-solid fa-circle-xmark"></i> Nhược điểm</strong>
+                                            ${npc.cons}
+                                        </div>
+                                    </div>
+
+                                    <div class="dossier-section">
+                                        <div class="dossier-heading">
+                                            <i class="fa-solid fa-landmark"></i> Gia Thế & Bối Cảnh
+                                        </div>
+                                        <p class="dossier-text">${npc.background}</p>
+                                    </div>
+
+                                    <div class="dossier-section">
+                                        <div class="dossier-heading">
+                                            <i class="fa-solid fa-shield-halved"></i> Đặc Trưng Tác Chiến
+                                        </div>
+                                        <p class="dossier-text">${npc.special}</p>
+                                    </div>
+
+                                </div>
+
+                                <div class="card-back-footer">
+                                    <button class="flip-back-btn">
+                                        <i class="fa-solid fa-rotate-left"></i> Lật lại ảnh đại diện
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                `;
+            }).join("");
+        }
+
+        // === 5. EVENT HANDLERS ===
+        function setFilter(groupId) {
+            currentFilter = groupId;
+            renderTabs();
+            renderCards();
+        }
+
+        function toggleCardFlip(cardElement, event) {
+            // Không lật khi người dùng đang cuộn nội dung đọc bên trong hồ sơ
+            if (event.target.closest('.card-back-body') && !event.target.closest('.flip-back-btn')) {
+                return;
+            }
+            cardElement.classList.toggle('is-flipped');
+        }
+
+        // Search listener
+        document.getElementById("searchInput").addEventListener("input", function(e) {
+            searchQuery = e.target.value;
+            renderCards();
+        });
+
+        // Initialize
+        document.addEventListener("DOMContentLoaded", () => {
+            renderTabs();
+            renderCards();
+        });
+
+// ================= INTRO ONBOARDING LOGIC (LOCALSTORAGE) =================
+        const INTRO_STORAGE_KEY = "base7_intro_completed_v1";
+        let currentIntroStep = 0;
+
+        function checkIntroState() {
+            const introModal = document.getElementById("introModal");
+            // Kiểm tra nếu đã xem trước đó thì ẩn luôn
+            if (localStorage.getItem(INTRO_STORAGE_KEY) === "true") {
+                if (introModal) introModal.style.display = "none";
+            }
+        }
+
+        function updateIntroUI() {
+            const steps = document.querySelectorAll(".intro-step");
+            const dots = document.querySelectorAll(".intro-dot");
+            const nextBtn = document.querySelector(".intro-btn-next");
+
+            steps.forEach((step, idx) => {
+                step.classList.toggle("active", idx === currentIntroStep);
+            });
+
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle("active", idx === currentIntroStep);
+            });
+
+            if (nextBtn) {
+                if (currentIntroStep === steps.length - 1) {
+                    nextBtn.innerHTML = `<span>Bắt đầu truy cập</span> <i class="fa-solid fa-check"></i>`;
+                } else {
+                    nextBtn.innerHTML = `<span>Tiếp tục</span> <i class="fa-solid fa-arrow-right"></i>`;
+                }
+            }
+        }
+
+        function nextIntroStep() {
+            const steps = document.querySelectorAll(".intro-step");
+            if (currentIntroStep < steps.length - 1) {
+                currentIntroStep++;
+                updateIntroUI();
+            } else {
+                finishIntro();
+            }
+        }
+
+        function finishIntro() {
+            // Lưu vào localStorage để khi Reload / F5 sẽ không bao giờ hiện lại
+            localStorage.setItem(INTRO_STORAGE_KEY, "true");
+            const introModal = document.getElementById("introModal");
+            if (introModal) {
+                introModal.classList.add("hidden");
+                setTimeout(() => {
+                    introModal.style.display = "none";
+                }, 400);
+            }
+        }
+
+        // Chạy kiểm tra ngay khi load xong DOM
+        document.addEventListener("DOMContentLoaded", () => {
+            checkIntroState();
+        });
+// ================= TACTICAL MODAL HANDLERS =================
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add("active");
+                document.body.style.overflow = "hidden"; // Khóa cuộn trang khi mở modal
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove("active");
+                document.body.style.overflow = ""; // Mở lại cuộn trang
+            }
+        }
+
+        function closeModalOnBackdrop(event, modalId) {
+            if (event.target.classList.contains("tactical-modal-backdrop")) {
+                closeModal(modalId);
+            }
+        }
+
+        // Đóng modal khi nhấn phím ESC
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                closeModal("briefingModal");
+                closeModal("mapModal");
+                closeModal("worldMapModal");
+            }
+        });
+    </script>
+</body>
+</html>
