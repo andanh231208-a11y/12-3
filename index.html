@@ -1583,360 +1583,527 @@
     100% { transform: rotate(360deg); }
 }
 
-/* --- OVERLAY & MODAL HUD CONTAINER --- */
-.bio-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(4, 6, 10, 0.85);
-    backdrop-filter: blur(8px);
-    z-index: 10000;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+/* ================= CSS GIAO DIỆN CẢNH BÁO SINH TỒN ================= */
+:root {
+  --bio-red: #ff2a2a;
+  --bio-dark-red: #8b0000;
+  --bio-orange: #ff9900;
+  --bio-bg: #0d1117;
+  --bio-panel: #161b22;
+  --bio-border: rgba(255, 42, 42, 0.4);
+  --bio-text: #e6edf3;
+  --bio-muted: #8b949e;
 }
 
-.bio-overlay.active {
-    display: flex;
-    opacity: 1;
+/* Nút bấm tròn nổi (Floating Action Button) */
+.bio-emergency-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99999;
 }
 
-.bio-modal-container {
-    background: #0d1117;
-    border: 1px solid #ff2a2a;
-    box-shadow: 0 0 35px rgba(255, 0, 50, 0.3), inset 0 0 20px rgba(0, 0, 0, 0.9);
-    width: 100%;
-    max-width: 780px;
-    max-height: 90vh;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow: hidden;
-    color: #c9d1d9;
-    font-family: system-ui, -apple-system, sans-serif;
-    animation: modal-zoom 0.3s ease-out;
+.bio-pulse-btn {
+  position: relative;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ff2a2a 0%, #800000 100%);
+  border: 2px solid #ff7777;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(255, 42, 42, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 0;
+  outline: none;
 }
 
-@keyframes modal-zoom {
-    from { transform: scale(0.92); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+.bio-pulse-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 30px rgba(255, 42, 42, 0.9);
 }
 
-/* Scanline HUD effect */
-.bio-scanline {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-    background-size: 100% 4px, 6px 100%;
-    pointer-events: none;
-    z-index: 10;
+.bio-pulse-btn:active {
+  transform: scale(0.95);
 }
 
-/* Header */
-.bio-modal-header {
-    background: #161b22;
-    padding: 10px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #30363d;
+.bio-icon {
+  font-size: 24px;
+  line-height: 1;
+  filter: drop-shadow(0 0 4px #000);
 }
 
-.bio-header-badge {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 11px;
-    font-family: 'Courier New', monospace;
-    font-weight: bold;
-    color: #ff7b72;
-    letter-spacing: 1px;
+.bio-badge {
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  background: #000;
+  color: #ff3b30;
+  padding: 1px 4px;
+  border-radius: 4px;
+  margin-top: 2px;
+  border: 1px solid #ff3b30;
+  text-transform: uppercase;
 }
 
-.blinking-dot {
-    width: 8px;
-    height: 8px;
-    background: #ff3333;
-    border-radius: 50%;
-    box-shadow: 0 0 8px #ff3333;
-    animation: blink 1s infinite;
+/* Hiệu ứng radar quét xung quanh nút */
+.bio-radar-ring {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border-radius: 50%;
+  border: 2px solid var(--bio-red);
+  opacity: 0.8;
+  animation: bioRadarPulse 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  pointer-events: none;
 }
 
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.2; }
+.bio-radar-ring.delay {
+  animation-delay: 1s;
+}
+
+@keyframes bioRadarPulse {
+  0% { transform: scale(0.9); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* Overlay & Modal Container */
+.bio-modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(6px);
+  z-index: 100000;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.bio-modal-overlay.show {
+  display: flex;
+  opacity: 1;
+}
+
+.bio-hud-modal {
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  background: var(--bio-bg);
+  border: 1.5px solid var(--bio-border);
+  border-radius: 12px;
+  box-shadow: 0 0 35px rgba(255, 42, 42, 0.3), inset 0 0 15px rgba(255, 42, 42, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--bio-text);
+  animation: bioSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes bioSlideUp {
+  from { transform: translateY(20px) scale(0.96); }
+  to { transform: translateY(0) scale(1); }
+}
+
+/* Header HUD */
+.bio-hud-header {
+  padding: 14px 16px;
+  background: linear-gradient(180deg, rgba(139, 0, 0, 0.4) 0%, rgba(22, 27, 34, 0.8) 100%);
+  border-bottom: 1px solid var(--bio-border);
+  position: relative;
+}
+
+.bio-hud-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bio-blink-dot {
+  width: 10px;
+  height: 10px;
+  background-color: var(--bio-red);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--bio-red);
+  animation: bioBlink 1s infinite alternate;
+}
+
+@keyframes bioBlink {
+  from { opacity: 0.3; }
+  to { opacity: 1; }
+}
+
+.bio-hud-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+  color: #ff4d4d;
+  letter-spacing: 0.5px;
+}
+
+.bio-hud-subtitle {
+  font-size: 10.5px;
+  color: var(--bio-muted);
+  margin-top: 3px;
+  letter-spacing: 0.5px;
 }
 
 .bio-close-btn {
-    background: transparent;
-    border: 1px solid #30363d;
-    color: #8b949e;
-    border-radius: 4px;
-    width: 28px;
-    height: 28px;
-    cursor: pointer;
-    transition: all 0.2s;
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: var(--bio-muted);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: color 0.15s;
 }
 
 .bio-close-btn:hover {
-    background: #da3633;
-    color: #fff;
-    border-color: #f85149;
+  color: #fff;
 }
 
-/* Title */
-.bio-modal-title {
-    padding: 16px 20px 8px;
-    border-bottom: 1px solid rgba(255, 42, 42, 0.2);
-    background: linear-gradient(180deg, rgba(255, 0, 0, 0.08) 0%, transparent 100%);
+/* Navigation Tabs */
+.bio-tab-nav {
+  display: flex;
+  background: #090d12;
+  border-bottom: 1px solid #21262d;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.bio-tab-nav::-webkit-scrollbar {
+  display: none;
 }
 
-.bio-modal-title h2 {
-    margin: 0;
-    color: #ff4d4d;
-    font-size: 18px;
-    letter-spacing: 0.5px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+.bio-tab-btn {
+  flex: 1;
+  min-width: 110px;
+  padding: 10px 8px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--bio-muted);
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+  text-align: center;
 }
 
-.bio-subtitle {
-    margin: 4px 0 0;
-    font-size: 11px;
-    font-family: 'Courier New', monospace;
-    color: #8b949e;
-    letter-spacing: 1px;
+.bio-tab-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.03);
 }
 
-/* Body & Cards */
-.bio-modal-body {
-    padding: 16px 20px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+.bio-tab-btn.active {
+  color: var(--bio-red);
+  border-bottom: 2px solid var(--bio-red);
+  background: rgba(255, 42, 42, 0.08);
 }
 
-.bio-modal-body::-webkit-scrollbar {
-    width: 6px;
+/* Body & Tab Content */
+.bio-hud-body {
+  padding: 14px;
+  overflow-y: auto;
+  max-height: calc(90vh - 160px);
+  box-sizing: border-box;
 }
-.bio-modal-body::-webkit-scrollbar-thumb {
-    background: #ff2a2a44;
-    border-radius: 3px;
+
+.bio-tab-pane {
+  display: none;
+}
+
+.bio-tab-pane.active {
+  display: block;
+}
+
+/* Elements: Alert Box & Cards */
+.bio-alert-box {
+  background: rgba(255, 42, 42, 0.12);
+  border-left: 3.5px solid var(--bio-red);
+  padding: 10px 12px;
+  font-size: 12px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  line-height: 1.45;
 }
 
 .bio-card {
-    background: #161b22;
-    border: 1px solid #30363d;
-    border-radius: 6px;
-    padding: 14px;
-}
-
-.bio-card.hazard-border {
-    border-left: 4px solid #ff4444;
+  background: var(--bio-panel);
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 12px;
+  line-height: 1.5;
 }
 
 .bio-card-title {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 10px;
-    border-bottom: 1px dashed #30363d;
-    padding-bottom: 6px;
+  font-weight: bold;
+  color: #ff9900;
+  margin-bottom: 6px;
+  font-size: 12.5px;
 }
 
-.bio-card-title h3 {
-    margin: 0;
-    font-size: 14px;
-    color: #f0f6fc;
-    letter-spacing: 0.5px;
+.bio-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
 }
 
-.highlight-code {
-    background: #21262d;
-    color: #ff7b72;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-family: monospace;
-    font-size: 12px;
-    border: 1px solid #30363d;
+.bio-mini-stat {
+  background: rgba(0, 0, 0, 0.35);
+  padding: 8px;
+  border-radius: 6px;
+  display: flex;
+  gap: 8px;
+  font-size: 11.5px;
+  border: 1px solid #21262d;
 }
 
-.vector-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 8px;
+.bio-mini-stat p {
+  margin: 2px 0 0 0;
+  color: var(--bio-muted);
 }
 
-.tag {
-    font-size: 11px;
-    padding: 3px 8px;
-    border-radius: 4px;
-}
-.tag.danger {
-    background: rgba(218, 54, 51, 0.2);
-    border: 1px solid #da3633;
-    color: #ff7b72;
-}
-.tag.safe {
-    background: rgba(46, 160, 67, 0.15);
-    border: 1px solid #2ea043;
-    color: #7ee787;
+.bio-stat-icon {
+  font-size: 18px;
 }
 
-/* Stepper Timeline */
-.timeline-stepper {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+/* Timeline Stages */
+.bio-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.step-item {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
+.bio-timeline-item {
+  display: flex;
+  gap: 12px;
+  background: var(--bio-panel);
+  border: 1px solid #30363d;
+  padding: 10px 12px;
+  border-radius: 8px;
+  align-items: flex-start;
 }
 
-.step-badge {
-    background: #21262d;
-    color: #e6edf3;
-    font-size: 10px;
-    font-weight: bold;
-    padding: 3px 6px;
-    border-radius: 4px;
-    min-width: 90px;
-    text-align: center;
-    font-family: monospace;
-    border: 1px solid #30363d;
+.bio-tl-badge {
+  background: #21262d;
+  color: #58a6ff;
+  font-weight: 800;
+  font-size: 12px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  border: 1px solid #30363d;
 }
 
-.step-badge.warning {
-    border-color: #d29922;
-    color: #f2cc60;
-    background: rgba(187, 128, 9, 0.15);
+.bio-tl-badge.warn {
+  color: var(--bio-orange);
+  border-color: rgba(255, 153, 0, 0.4);
 }
 
-.step-badge.danger {
-    border-color: #f85149;
-    color: #ff7b72;
-    background: rgba(218, 54, 51, 0.2);
+.bio-tl-badge.danger {
+  color: var(--bio-red);
+  background: rgba(255, 42, 42, 0.2);
+  border-color: var(--bio-red);
 }
 
-.step-text {
-    font-size: 12px;
-}
-.step-text strong {
-    color: #f0f6fc;
-}
-.step-text p {
-    margin: 2px 0 0;
-    color: #8b949e;
+.bio-tl-content h4 {
+  margin: 0 0 4px 0;
+  font-size: 13px;
+  color: #fff;
 }
 
-/* Variants Grid */
-.variant-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 10px;
+.bio-tl-content p {
+  margin: 0;
+  font-size: 11.5px;
+  color: var(--bio-muted);
+  line-height: 1.45;
 }
 
-.variant-box {
-    background: #0d1117;
-    border: 1px solid #30363d;
-    border-radius: 4px;
-    padding: 8px 10px;
+/* Monster Bestiary Grid */
+.bio-monster-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
 }
 
-.variant-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 4px;
+.bio-monster-card {
+  background: var(--bio-panel);
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 12px;
 }
 
-.v-name {
-    font-weight: bold;
-    font-size: 12px;
-    color: #f0f6fc;
+.bio-monster-card.boss {
+  border-color: var(--bio-red);
+  background: linear-gradient(180deg, rgba(139, 0, 0, 0.2) 0%, var(--bio-panel) 100%);
 }
 
-.v-tier {
-    font-size: 9px;
-    font-weight: bold;
-    padding: 1px 4px;
-    border-radius: 3px;
-    font-family: monospace;
+.bio-monster-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
 }
 
-.tier-1 .v-tier { background: #21262d; color: #8b949e; }
-.tier-2 .v-tier { background: rgba(187, 128, 9, 0.2); color: #e3b341; border: 1px solid #9e6a03; }
-.tier-3 .v-tier { background: rgba(218, 54, 51, 0.2); color: #ff7b72; border: 1px solid #da3633; }
-.tier-alpha {
-    border-color: #a371f7;
-    background: linear-gradient(145deg, #0d1117, #1b122c);
-}
-.tier-alpha .v-tier { background: #8957e5; color: #fff; }
-
-.v-desc {
-    margin: 0;
-    font-size: 11px;
-    color: #8b949e;
-    line-height: 1.4;
+.bio-monster-head h4 {
+  margin: 0;
+  font-size: 13px;
+  color: #fff;
 }
 
-/* Directives */
-.directive-box {
-    background: rgba(218, 54, 51, 0.08);
-    border: 1px dashed #f85149;
+.bio-mon-badge {
+  font-size: 9px;
+  font-weight: 800;
+  padding: 2px 5px;
+  border-radius: 4px;
 }
 
-.bio-rules-list {
-    margin: 0;
-    padding-left: 18px;
-    font-size: 12px;
-    color: #f0f6fc;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+.bio-mon-badge.c1 { background: #238636; color: #fff; }
+.bio-mon-badge.c2 { background: #d29922; color: #000; }
+.bio-mon-badge.c3 { background: #da3633; color: #fff; }
+.bio-mon-badge.c4 { background: #8957e5; color: #fff; box-shadow: 0 0 6px #8957e5; }
+
+.bio-weakness {
+  margin-top: 4px;
+  color: #ffa657;
+  font-size: 11.5px;
 }
 
-/* Footer */
-.bio-modal-footer {
-    background: #161b22;
-    padding: 12px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid #30363d;
+/* Protocols */
+.bio-protocol-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.footer-code {
-    font-family: monospace;
-    font-size: 10px;
-    color: #6e7681;
+.bio-protocol-item {
+  display: flex;
+  gap: 12px;
+  background: var(--bio-panel);
+  border-left: 3.5px solid #58a6ff;
+  border-radius: 4px 8px 8px 4px;
+  padding: 10px 12px;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.bio-protocol-item.warn {
+  border-left-color: var(--bio-red);
+}
+
+.bio-proto-num {
+  font-weight: 900;
+  font-size: 14px;
+  color: var(--bio-muted);
+}
+
+.bio-protocol-item p {
+  margin: 4px 0 0 0;
+  color: var(--bio-muted);
+}
+
+/* Footer HUD */
+.bio-hud-footer {
+  padding: 10px 14px;
+  background: #090d12;
+  border-top: 1px solid #21262d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.bio-footer-status {
+  font-size: 10.5px;
+  color: var(--bio-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .bio-confirm-btn {
-    background: #da3633;
-    border: 1px solid #f85149;
-    color: #fff;
-    font-weight: bold;
-    font-size: 12px;
-    padding: 6px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    box-shadow: 0 0 10px rgba(218, 54, 51, 0.4);
-    transition: all 0.2s;
+  background: var(--bio-red);
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+  white-space: nowrap;
 }
 
 .bio-confirm-btn:hover {
-    background: #b62324;
-    box-shadow: 0 0 15px rgba(218, 54, 51, 0.8);
+  opacity: 0.9;
+}
+.bio-confirm-btn:active {
+  transform: scale(0.97);
+}
+
+/* ================= ĐỘ TƯƠNG THÍCH MÀN HÌNH 540PX TRỞ XUỐNG ================= */
+@media (max-width: 540px) {
+  .bio-emergency-widget {
+    bottom: 16px;
+    right: 16px;
+  }
+  .bio-pulse-btn {
+    width: 54px;
+    height: 54px;
+  }
+  .bio-icon {
+    font-size: 20px;
+  }
+  .bio-badge {
+    font-size: 7.5px;
+  }
+  .bio-hud-modal {
+    max-height: 94vh;
+  }
+  .bio-hud-title {
+    font-size: 13.5px;
+  }
+  .bio-grid-2 {
+    grid-template-columns: 1fr;
+  }
+  .bio-tab-btn {
+    min-width: 90px;
+    font-size: 10.5px;
+    padding: 8px 6px;
+  }
+  .bio-hud-body {
+    padding: 10px;
+  }
+  .bio-hud-footer {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: 8px;
+  }
+  .bio-footer-status {
+    justify-content: center;
+  }
 }
 </style>
 </head>
@@ -2206,195 +2373,233 @@
         </div>
     </div>
 
-        <!-- ================================================================= -->
-<!-- EMERGENCY ALERT COMPONENT (BUTTON + SURVIVAL HUD MODAL) -->
-<!-- ================================================================= -->
-
-<!-- 1. NÚT TRÒN CẢNH BÁO KHẨN CẤP (FLOATING ACTION BUTTON) -->
-<div id="biohazard-fab" onclick="toggleBioModal(true)" title="CẢNH BÁO KHẨN CẤP TỪ BỘ CHỈ HUY">
-    <div class="fab-pulse-ring"></div>
-    <div class="fab-pulse-ring-outer"></div>
-    <div class="fab-inner">
-        <span class="fab-icon">☣️</span>
-        <span class="fab-badge">SOS</span>
-    </div>
+    <!-- ================= BẮT ĐẦU: NÚT & POPUP CẢNH BÁO KHẨN CẤP ================= -->
+<!-- Nút tròn nổi khẩn cấp -->
+<div class="bio-emergency-widget">
+  <button id="bioEmergencyBtn" class="bio-pulse-btn" aria-label="Cảnh báo khẩn cấp">
+    <div class="bio-radar-ring"></div>
+    <div class="bio-radar-ring delay"></div>
+    <span class="bio-icon">☣️</span>
+    <span class="bio-badge">MÃ ĐỎ</span>
+  </button>
 </div>
 
-<!-- 2. MODAL GIAO DIỆN GAME SINH TỒN / BẢN TIN KHẨN CẤP -->
-<div id="biohazard-modal-overlay" class="bio-overlay" onclick="handleBioOverlayClick(event)">
-    <div class="bio-modal-container">
-        <!-- Scanline & Grid Effect -->
-        <div class="bio-scanline"></div>
-        
-        <!-- Header thông báo -->
-        <div class="bio-modal-header">
-            <div class="bio-header-badge">
-                <span class="blinking-dot"></span>
-                <span>TÍN HIỆU PHÁT THANH KHẨN CẤP • TẦN SỐ AM 720kHz</span>
-            </div>
-            <button class="bio-close-btn" onclick="toggleBioModal(false)">✕</button>
-        </div>
-
-        <div class="bio-modal-title">
-            <h2>🚨 BÁO ĐỘNG ĐỎ: ĐỘT BIẾN SINH HỌC CẤP QUỐC GIA</h2>
-            <p class="bio-subtitle">TRUYỀN PHÁT TỪ TRUNG TÂM PHÒNG VỆ DÂN SỰ & QUÂN KHU TĨNH GIANG</p>
-        </div>
-
-        <!-- Nội dung chính -->
-        <div class="bio-modal-body">
-            
-            <!-- SECTION 1: NGUỒN GỐC -->
-            <div class="bio-card hazard-border">
-                <div class="bio-card-title">
-                    <span class="bio-icon">🧬</span>
-                    <h3>I. NGUỒN GỐC & CƠ CHẾ LÂY NHIỄM</h3>
-                </div>
-                <div class="bio-card-content">
-                    <p>• <strong>Mã Định Danh:</strong> <span class="highlight-code">DỰ ÁN XZO — CHỦNG TẾ BÀO ĐỘT BIẾN X-7</span></p>
-                    <p>• <strong>Xuất xứ:</strong> Bắt nguồn từ sự cố rò rỉ huyết thanh phục hồi mô thần kinh tại Viện Nghiên cứu Độc chất Quân sự & Nhà máy Dược phẩm Tiêu Thị.</p>
-                    <p>• <strong>Phương Thức Lây Truyền:</strong></p>
-                    <div class="vector-tags">
-                        <span class="tag danger">🩸 Cắn / Cào xước sâu</span>
-                        <span class="tag danger">💧 Nguồn nước mặt ô nhiễm</span>
-                        <span class="tag safe">💨 Không lây qua không khí thường</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SECTION 2: 4 GIAI ĐOẠN PHÁT TÁC -->
-            <div class="bio-card">
-                <div class="bio-card-title">
-                    <span class="bio-icon">⏱️</span>
-                    <h3>II. TIẾN TRÌNH BIẾN ĐỔI THỂ XÁC (BODY HORROR)</h3>
-                </div>
-                <div class="timeline-stepper">
-                    <div class="step-item">
-                        <div class="step-badge">P1: 0 - 30 PHÚT</div>
-                        <div class="step-text">
-                            <strong>Ủ Bệnh & Sốt Cao (40°C - 41°C)</strong>
-                            <p>Tĩnh mạch cổ và thái dương phình to, tím đen như rễ cây. Nạn nhân khát nước dữ dội, vã mồ hôi nhờn dính.</p>
-                        </div>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-badge">P2: 30 - 60 PHÚT</div>
-                        <div class="step-text">
-                            <strong>Co Giật & Mất Ý Thức</strong>
-                            <p>Nhịp tim vọt >180 bpm, nôn ra dịch máu đen. Nghiến răng làm vỡ vụn men răng, mắt phủ màng đục nhờ nhờ.</p>
-                        </div>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-badge warning">P3: 1 - 2 GIỜ</div>
-                        <div class="step-text">
-                            <strong>Tái Cấu Trúc Khung Xương</strong>
-                            <p>Xương bẻ gập, gãy rôm rốp phi tự nhiên. Cơ bắp trương phình, lực cắn và tốc độ bộc phát gấp 3 lần người thường.</p>
-                        </div>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-badge danger">P4: SAU 24 GIỜ</div>
-                        <div class="step-text">
-                            <strong>Thể Đột Biến Hoàn Chỉnh</strong>
-                            <p>Mù thị giác hoàn toàn. Thính giác và khứu giác siêu nhạy, phát cuồng trước âm thanh lớn và mùi máu tươi.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SECTION 3: PHÂN CẤP CHỦNG LOẠI QUÁI VẬT -->
-            <div class="bio-card">
-                <div class="bio-card-title">
-                    <span class="bio-icon">👾</span>
-                    <h3>III. BẢNG PHÂN LOẠI SINH THỂ ĐỘT BIẾN</h3>
-                </div>
-                <div class="variant-grid">
-                    <div class="variant-box tier-1">
-                        <div class="variant-head">
-                            <span class="v-name">🧟 THỂ BỘ HÀNH (Walker)</span>
-                            <span class="v-tier">TIER 1</span>
-                        </div>
-                        <p class="v-desc">Dân thường biến đổi. Chậm chạp nhưng đi theo bầy đàn đông đảo. Tiêu diệt: 1 phát đạn sọ hoặc đòn báng súng vào gáy.</p>
-                    </div>
-
-                    <div class="variant-box tier-2">
-                        <div class="variant-head">
-                            <span class="v-name">🏃 THỂ BỘC TỐC (Runner)</span>
-                            <span class="v-tier">TIER 2</span>
-                        </div>
-                        <p class="v-desc">Vận động viên/lính trẻ. Tốc độ 30-40km/h, nhảy vượt rào. Điểm yếu: Bắn nát khớp gối để làm ngã.</p>
-                    </div>
-
-                    <div class="variant-box tier-3">
-                        <div class="variant-head">
-                            <span class="v-name">🛡️ THỂ CƯỜNG HÓA (Tanker)</span>
-                            <span class="v-tier">TIER 3</span>
-                        </div>
-                        <p class="v-desc">Dân thể hình/Judo. Khối cơ trương phình, da dày chống đạn ngắn. Cần đạn 7.62mm xuyên hốc mắt/chất nổ.</p>
-                    </div>
-
-                    <div class="variant-box tier-2">
-                        <div class="variant-head">
-                            <span class="v-name">📢 THỂ KÍCH ÂM (Screamer)</span>
-                            <span class="v-tier">TIER 2</span>
-                        </div>
-                        <p class="v-desc">Họng phình to. Tiếng thét sóng âm >120dB làm điếc tai và gọi cả bầy quái vật trong 1.5km. Ưu tiên bắn tỉa xuyên họng.</p>
-                    </div>
-
-                    <div class="variant-box tier-2">
-                        <div class="variant-head">
-                            <span class="v-name">🕷️ THỂ BÒ TRƯỜN (Crawler)</span>
-                            <span class="v-tier">TIER 2</span>
-                        </div>
-                        <p class="v-desc">Trật khớp như bò sát. Phục kích từ trần nhà, ống thông gió, không tiếng động. Diệt bằng dao găm/lưỡi lê cự ly hẹp.</p>
-                    </div>
-
-                    <div class="variant-box tier-3">
-                        <div class="variant-head">
-                            <span class="v-name">🌊 THỂ THỦY HOẠI (Lurker)</span>
-                            <span class="v-tier">TIER 3</span>
-                        </div>
-                        <p class="v-desc">Ẩn mình dưới cống rãnh, hồ đập. Kéo chân dìm chết nạn nhân. Sợ lửa và chất nổ khi bị kéo lên cạn.</p>
-                    </div>
-
-                    <div class="variant-box tier-3">
-                        <div class="variant-head">
-                            <span class="v-name">☣️ THỂ BỌC MỦ (Bloater)</span>
-                            <span class="v-tier">TIER 3</span>
-                        </div>
-                        <p class="v-desc">Trương phồng bọc mủ khí mê-tan. Nổ văng acid độc bán kính 5m gây mù mắt. CẤM chém cận chiến, chỉ bắn từ xa >10m.</p>
-                    </div>
-
-                    <div class="variant-box tier-alpha">
-                        <div class="variant-head">
-                            <span class="v-name">👑 THỂ ĐẦU ĐÀN (Alpha Echo)</span>
-                            <span class="v-tier">BOSS</span>
-                        </div>
-                        <p class="v-desc">Còn lý trí, biết tránh đạn, phát sóng hạ âm điều khiển bầy đàn, giả giọng phát thanh câu mồi. Cần hỏa lực tập trung cao.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SECTION 4: CHỈ LỆNH QUÂN SỰ -->
-            <div class="bio-card directive-box">
-                <div class="bio-card-title">
-                    <span class="bio-icon">⚠️</span>
-                    <h3>IV. CHỈ THỊ SINH TỒN BẮT BUỘC</h3>
-                </div>
-                <ul class="bio-rules-list">
-                    <li>⏱️ <strong>QUY TẮC 3 PHÚT:</strong> Nếu bị cắn ở tay/chân, garo và chặt bỏ chi trong vòng 180 giây trước khi độc tố chạy về tim.</li>
-                    <li>🤫 <strong>QUY TẮC ÂM THANH:</strong> Mọi tiếng la hét, tiếng chuông điện thoại đều dẫn đến cái chết. Giữ im lặng tuyệt đối!</li>
-                    <li>🎯 <strong>XẠ KÍCH TIẾT KIỆM:</strong> Không xả đạn bừa bãi. Chỉ điểm hỏa vào hộp sọ hoặc đốt sống cổ.</li>
-                </ul>
-            </div>
-
-        </div>
-
-        <!-- Footer -->
-        <div class="bio-modal-footer">
-            <span class="footer-code">BẢO MẬT CẤP ĐỘ 4 • CĂN CỨ HUẤN LUYỆN SỐ 7</span>
-            <button class="bio-confirm-btn" onclick="toggleBioModal(false)">ĐÃ HIỂU QUÂN LỆNH</button>
-        </div>
+<!-- Modal Giao diện Quân sự Sinh tồn -->
+<div id="bioModalOverlay" class="bio-modal-overlay">
+  <div class="bio-hud-modal">
+    <!-- Header HUD -->
+    <div class="bio-hud-header">
+      <div class="bio-hud-title-wrap">
+        <span class="bio-blink-dot"></span>
+        <h2 class="bio-hud-title">🚨 CẢNH BÁO KHẨN CẤP QUỐC GIA</h2>
+      </div>
+      <div class="bio-hud-subtitle">HỆ THỐNG PHÒNG THỦ DÂN SỰ & QUÂN KHU TĨNH GIANG</div>
+      <button id="bioCloseModalBtn" class="bio-close-btn" aria-label="Đóng">&times;</button>
     </div>
-</div>
 
+    <!-- Thanh chuyển Tab -->
+    <div class="bio-tab-nav">
+      <button class="bio-tab-btn active" data-target="tab-origin">🧪 NGUỒN GỐC</button>
+      <button class="bio-tab-btn" data-target="tab-stages">🧬 4 GIAI ĐOẠN</button>
+      <button class="bio-tab-btn" data-target="tab-bestiary">👹 PHÂN LOẠI QUÁI</button>
+      <button class="bio-tab-btn" data-target="tab-protocol">🛡️ CHỈ THỊ</button>
+    </div>
+
+    <!-- Nội dung Modal -->
+    <div class="bio-hud-body">
+      
+      <!-- TAB 1: NGUỒN GỐC -->
+      <div id="tab-origin" class="bio-tab-pane active">
+        <div class="bio-alert-box danger">
+          <strong>⚠️ TÌNH TRẠNG LÂY NHIỄM CẤP ĐỘ 1:</strong> Mầm bệnh kích động thần kinh cục bộ mất kiểm soát tại Vành đai 3 và các khu vực ven rừng.
+        </div>
+        <div class="bio-card">
+          <div class="bio-card-title">🔬 THÔNG TIN CHỦNG VI RÚT: DỰ ÁN XZO (X-7)</div>
+          <p><strong>Nguồn gốc:</strong> Rò rỉ từ cơ sở nghiên cứu sinh học quân sự ngầm liên kết với <em>Tập đoàn Dược phẩm Tiêu Thị</em>. Ban đầu là huyết thanh tái tạo mô cơ bắp, đã biến dị thành chủng ký sinh thần kinh mất kiểm soát.</p>
+          <div class="bio-grid-2">
+            <div class="bio-mini-stat">
+              <span class="bio-stat-icon">🩸</span>
+              <div>
+                <strong>Đường lây chính:</strong>
+                <p>Cào xước sâu, cắn xé, dịch thể dính vào niêm mạc hoặc vết thương hở.</p>
+              </div>
+            </div>
+            <div class="bio-mini-stat">
+              <span class="bio-stat-icon">💧</span>
+              <div>
+                <strong>Nguồn nước mặt:</strong>
+                <p>Nước ngầm chưa khử khuẩn có nguy cơ nhiễm độc cao. Cấm uống trực tiếp.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: BIỂU HIỆN & 4 GIAI ĐOẠN -->
+      <div id="tab-stages" class="bio-tab-pane">
+        <div class="bio-timeline">
+          
+          <div class="bio-timeline-item">
+            <div class="bio-tl-badge">01</div>
+            <div class="bio-tl-content">
+              <h4>Giai đoạn 1: Ủ bệnh (0 - 30 phút)</h4>
+              <p>🌡️ Sốt cao đột ngột 40°C, vã mồ hôi hột, khát nước dữ dội.<br>
+              🟣 Mạch máu quanh vết cào/cắn nổi phồng, chuyển tím đen như rễ cây mục.</p>
+            </div>
+          </div>
+
+          <div class="bio-timeline-item">
+            <div class="bio-tl-badge">02</div>
+            <div class="bio-tl-content">
+              <h4>Giai đoạn 2: Co giật & Phát tác (30 - 60 phút)</h4>
+              <p>💓 Nhịp tim vọt trên 180 bpm, nôn mửa dịch máu đen sủi bọt.<br>
+              🦷 Cơ hàm nghiến gãy men răng, mất tri giác con người, phát tiếng gầm gừ.</p>
+            </div>
+          </div>
+
+          <div class="bio-timeline-item">
+            <div class="bio-tl-badge warn">03</div>
+            <div class="bio-tl-content">
+              <h4>Giai đoạn 3: Đột biến thể xác (1 - 2 giờ)</h4>
+              <p>🦴 Khung xương bẻ gập, cơ bắp căng phồng dị thường.<br>
+              ⚡ Tốc độ bộc phát và lực cắn tăng gấp 3 lần người trưởng thành.</p>
+            </div>
+          </div>
+
+          <div class="bio-timeline-item">
+            <div class="bio-tl-badge danger">04</div>
+            <div class="bio-tl-content">
+              <h4>Giai đoạn 4: Thể hoàn chỉnh (> 24 giờ)</h4>
+              <p>👁️ Giác mạc đục ngầu mất hoàn toàn thị giác.<br>
+              👂 Thính giác & khứu giác siêu nhạy (bị thu hút bởi tiếng hét, tiếng chuông và mùi máu tươi).</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- TAB 3: PHÂN LOẠI CHỦNG BIẾN THỂ -->
+      <div id="tab-bestiary" class="bio-tab-pane">
+        <div class="bio-monster-grid">
+          
+          <div class="bio-monster-card">
+            <div class="bio-monster-head">
+              <span class="bio-mon-badge c1">CẤP 1</span>
+              <h4>🧟 Thể Bộ Hành (Walker)</h4>
+            </div>
+            <p><strong>Đặc điểm:</strong> Di chuyển lảo đảo, kéo lê chân. Đi theo đàn lớn.</p>
+            <p class="bio-weakness">🎯 <strong>Điểm yếu:</strong> Bắn vỡ sọ hoặc đánh nát đốt sống cổ.</p>
+          </div>
+
+          <div class="bio-monster-card">
+            <div class="bio-monster-head">
+              <span class="bio-mon-badge c2">CẤP 2</span>
+              <h4>🏃 Thể Bộc Tốc (Runner)</h4>
+            </div>
+            <p><strong>Đặc điểm:</strong> Biến đổi từ người có thể lực tốt. Chạy 35-40 km/h, trèo tường cực nhanh.</p>
+            <p class="bio-weakness">🎯 <strong>Điểm yếu:</strong> Bắn gãy khớp gối, quét tầm thấp.</p>
+          </div>
+
+          <div class="bio-monster-card">
+            <div class="bio-monster-head">
+              <span class="bio-mon-badge c2">CẤP 2</span>
+              <h4>📢 Thể Kích Âm (Screamer)</h4>
+            </div>
+            <p><strong>Đặc điểm:</strong> Lồng ngực phình to. Thét sóng âm >120dB làm choáng và gọi cả đàn quái.</p>
+            <p class="bio-weakness">🎯 <strong>Điểm yếu:</strong> Bắn tỉa xuyên cuống họng từ xa.</p>
+          </div>
+
+          <div class="bio-monster-card">
+            <div class="bio-monster-head">
+              <span class="bio-mon-badge c2">CẤP 2</span>
+              <h4>🦎 Thể Bò Trườn (Crawler)</h4>
+            </div>
+            <p><strong>Đặc điểm:</strong> Khớp trật tự do, luồn ống thông gió 30cm, phục kích từ trần nhà.</p>
+            <p class="bio-weakness">🎯 <strong>Điểm yếu:</strong> Tầm với ngắn, dễ bị đâm bằng lưỡi lê.</p>
+          </div>
+
+          <div class="bio-monster-card">
+            <div class="bio-monster-head">
+              <span class="bio-mon-badge c3">CẤP 3</span>
+              <h4>🦏 Thể Cường Hóa (Tanker)</h4>
+            </div>
+            <p><strong>Đặc điểm:</strong> Cơ bắp trương phình, da dày chống đạn ngắn, húc đổ cửa gỗ.</p>
+            <p class="bio-weakness">🎯 <strong>Điểm yếu:</strong> Bắn đạn súng trường vào hốc mắt / dùng chất nổ.</p>
+          </div>
+
+          <div class="bio-monster-card">
+            <div class="bio-monster-head">
+              <span class="bio-mon-badge c3">CẤP 3</span>
+              <h4>💣 Thể Bọc Mủ (Bloater)</h4>
+            </div>
+            <p><strong>Đặc điểm:</strong> Nổi bọc mủ chứa khí mê-tan. Nổ tung văng acid khi bị chém/bắn vào thân.</p>
+            <p class="bio-weakness">🎯 <strong>Điểm yếu:</strong> Bắn từ xa (>10m), cấm cận chiến.</p>
+          </div>
+
+          <div class="bio-monster-card boss">
+            <div class="bio-monster-head">
+              <span class="bio-mon-badge c4">TỐI CAO</span>
+              <h4>👑 Thể Đầu Đàn (Alpha Echo)</h4>
+            </div>
+            <p><strong>Đặc điểm:</strong> Giữ tàn dư trí khôn, biết né đường ngắm và chỉ huy quái cấp thấp theo gọng kìm.</p>
+            <p class="bio-weakness">🎯 <strong>Điểm yếu:</strong> Hỏa lực súng máy tập trung kết hợp mìn định hướng.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- TAB 4: CHỈ THỊ SINH TỒN -->
+      <div id="tab-protocol" class="bio-tab-pane">
+        <div class="bio-protocol-list">
+          
+          <div class="bio-protocol-item">
+            <div class="bio-proto-num">01</div>
+            <div>
+              <strong>NỘI BẤT XUẤT, NGOẠI BẤT NHẬP:</strong>
+              <p>Khóa chặt cửa sắt, gia cố rào chắn tầng trệt. Tuyệt đối không mở cửa cho cá nhân có dấu hiệu sốt cao hoặc vết cắn giấu kín.</p>
+            </div>
+          </div>
+
+          <div class="bio-protocol-item">
+            <div class="bio-proto-num">02</div>
+            <div>
+              <strong>QUY TẮC IM LẶNG TUYỆT ĐỐI (LIGHTS & SOUND OUT):</strong>
+              <p>Tắt toàn bộ thiết bị phát sáng và chuông báo động. Quái vật bị mù nhưng sở hữu thính giác siêu nhạy cảm.</p>
+            </div>
+          </div>
+
+          <div class="bio-protocol-item">
+            <div class="bio-proto-num">03</div>
+            <div>
+              <strong>THỜI GIAN VÀNG CẮT BỎ CHI (180 GIÂY):</strong>
+              <p>Nếu bị cắn ở cẳng tay/cẳng chân, bắt buộc garo siết động mạch và cắt bỏ phần chi bị thương trong vòng 3 phút trước khi độc tố vào tim.</p>
+            </div>
+          </div>
+
+          <div class="bio-protocol-item warn">
+            <div class="bio-proto-num">04</div>
+            <div>
+              <strong>QUYỀN HẠN NỔ SÚNG QUÂN SỰ:</strong>
+              <p>Lực lượng phòng thủ được phép bắn hạ tại chỗ bất kỳ cá thể nào cố ý phá vỡ khu cách ly hoặc gây nguy hại cho cả tập thể.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer HUD -->
+    <div class="bio-hud-footer">
+      <div class="bio-footer-status">
+        <span class="bio-signal-bar"></span> TẦN SỐ KHẨN CẤP: 148.500 MHz
+      </div>
+      <button id="bioConfirmBtn" class="bio-confirm-btn">ĐÃ TIẾP NHẬN CHỈ THỊ ⚠️</button>
+    </div>
+  </div>
+</div>
+<!-- ================= KẾT THÚC: NÚT & POPUP CẢNH BÁO KHẨN CẤP ================= -->
+    
     <!-- FOOTER -->
     <footer>
         <p>Tất cả thuộc về chất xám của Le Bel Astre, nghiêm cấm hành vi đạo nhái, đánh cắp ý tưởng dưới mọi hình thức.</p>
@@ -3377,28 +3582,65 @@
             }
         });
 
-function toggleBioModal(show) {
-    const modal = document.getElementById('biohazard-modal-overlay');
-    if (show) {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Khóa cuộn trang nền
-    } else {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-}
+// ================= JS ĐIỀU KHIỂN CẢNH BÁO SINH TỒN ================= //
+document.addEventListener('DOMContentLoaded', function () {
+  const emergencyBtn = document.getElementById('bioEmergencyBtn');
+  const modalOverlay = document.getElementById('bioModalOverlay');
+  const closeModalBtn = document.getElementById('bioCloseModalBtn');
+  const confirmBtn = document.getElementById('bioConfirmBtn');
+  const tabBtns = document.querySelectorAll('.bio-tab-btn');
+  const tabPanes = document.querySelectorAll('.bio-tab-pane');
 
-function handleBioOverlayClick(e) {
-    if (e.target.id === 'biohazard-modal-overlay') {
-        toggleBioModal(false);
-    }
-}
+  // Mở Modal
+  function openBioModal() {
+    modalOverlay.classList.add('show');
+    document.body.style.overflow = 'hidden'; // Khóa cuộn trang nền
+  }
 
-// Cho phép nhấn ESC để đóng modal
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        toggleBioModal(false);
+  // Đóng Modal
+  function closeBioModal() {
+    modalOverlay.classList.remove('show');
+    document.body.style.overflow = ''; // Mở lại cuộn trang nền
+  }
+
+  if (emergencyBtn) emergencyBtn.addEventListener('click', openBioModal);
+  if (closeModalBtn) closeModalBtn.addEventListener('click', closeBioModal);
+  if (confirmBtn) confirmBtn.addEventListener('click', closeBioModal);
+
+  // Đóng khi click ngoài nền đen
+  if (modalOverlay) {
+    modalOverlay.addEventListener('click', function (e) {
+      if (e.target === modalOverlay) {
+        closeBioModal();
+      }
+    });
+  }
+
+  // Đóng bằng phím ESC
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modalOverlay.classList.contains('show')) {
+      closeBioModal();
     }
+  });
+
+  // Chuyển Tab tương tác
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', function () {
+      const targetId = this.getAttribute('data-target');
+
+      // Đổi trạng thái nút tab
+      tabBtns.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+
+      // Đổi nội dung hiển thị
+      tabPanes.forEach(pane => {
+        pane.classList.remove('active');
+        if (pane.id === targetId) {
+          pane.classList.add('active');
+        }
+      });
+    });
+  });
 });
     </script>
 </body>
