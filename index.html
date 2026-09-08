@@ -2105,6 +2105,678 @@
     justify-content: center;
   }
 }
+/* ================= CSS CẨM NANG SINH TỒN (TACTICAL HUD THEME) ================= */
+:root {
+  --guide-cyan: #00f0ff;
+  --guide-blue: #2563eb;
+  --guide-dark-blue: #0b132b;
+  --guide-bg: #070d1e;
+  --guide-panel: #111a33;
+  --guide-border: rgba(0, 240, 255, 0.35);
+  --guide-text: #e2e8f0;
+  --guide-muted: #94a3b8;
+}
+
+/* Nút bấm tròn nổi: Cẩm nang sinh tồn (Nằm ở vị trí phía trên nút Cảnh Báo Đỏ) */
+.guide-floating-widget {
+  position: fixed;
+  bottom: 96px; /* Cách đáy 96px để nằm ngay phía trên nút Cảnh Báo Đỏ (24px + 62px + khoảng cách) */
+  right: 24px;
+  z-index: 99998;
+}
+
+.guide-pulse-btn {
+  position: relative;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #0284c7 0%, #0c4a6e 80%, #082f49 100%);
+  border: 2px solid #38bdf8;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 0;
+  outline: none;
+}
+
+.guide-pulse-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.8);
+}
+
+.guide-pulse-btn:active {
+  transform: scale(0.95);
+}
+
+.guide-btn-icon {
+  font-size: 20px;
+  color: #e0f2fe;
+}
+
+.guide-btn-badge {
+  font-size: 7.5px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  background: #082f49;
+  color: #38bdf8;
+  padding: 1px 4px;
+  border-radius: 4px;
+  margin-top: 2px;
+  border: 1px solid #38bdf8;
+  text-transform: uppercase;
+}
+
+/* Hiệu ứng radar quét quanh nút cẩm nang */
+.guide-radar-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid var(--guide-cyan);
+  opacity: 0.7;
+  animation: guideRadarPulse 2.4s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes guideRadarPulse {
+  0% { transform: scale(0.9); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* Overlay & Modal Window Cố Định Khung */
+.guide-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(4, 8, 20, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 100001;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.guide-modal-overlay.show {
+  display: flex;
+  opacity: 1;
+}
+
+/* CỐ ĐỊNH CHIỀU CAO & KÍCH THƯỚC KHUNG */
+.guide-hud-window {
+  width: 100%;
+  max-width: 680px;
+  height: 580px; /* Khóa cứng chiều cao không cho co giãn */
+  max-height: 88vh;
+  background: var(--guide-bg);
+  border: 1.5px solid var(--guide-border);
+  border-radius: 16px;
+  box-shadow: 0 0 40px rgba(0, 240, 255, 0.25), inset 0 0 15px rgba(37, 99, 235, 0.15);
+  display: flex;
+  flex-direction: column; /* Đảm bảo cấu trúc 3 phần: Header, Body cuộn, Footer */
+  overflow: hidden;
+  box-sizing: border-box;
+  color: var(--guide-text);
+  animation: guideSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes guideSlideUp {
+  from { transform: translateY(20px) scale(0.96); }
+  to { transform: translateY(0) scale(1); }
+}
+
+/* Header HUD */
+.guide-hud-header {
+  padding: 14px 18px;
+  background: linear-gradient(180deg, rgba(37, 99, 235, 0.25) 0%, rgba(11, 19, 43, 0.9) 100%);
+  border-bottom: 1px solid var(--guide-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.guide-header-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.guide-status-orb {
+  width: 10px;
+  height: 10px;
+  background-color: var(--guide-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--guide-cyan);
+  animation: bioBlink 1.2s infinite alternate;
+}
+
+.guide-hud-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  color: var(--guide-cyan);
+  letter-spacing: 0.8px;
+  font-weight: 700;
+}
+
+.guide-hud-title {
+  margin: 2px 0 0 0;
+  font-size: 15px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.guide-btn-close {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--guide-muted);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.guide-btn-close:hover {
+  background: #ef4444;
+  color: #fff;
+  border-color: #ef4444;
+}
+
+/* Thanh chuyển tab phong cách Game Menu */
+.guide-tab-navbar {
+  display: flex;
+  background: #050a14;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex-shrink: 0;
+}
+
+.guide-tab-navbar::-webkit-scrollbar {
+  display: none;
+}
+
+.guide-tab-item {
+  flex: 1;
+  min-width: 110px;
+  padding: 10px 8px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--guide-muted);
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.guide-tab-item:hover {
+  color: #fff;
+  background: rgba(0, 240, 255, 0.04);
+}
+
+.guide-tab-item.active {
+  color: var(--guide-cyan);
+  border-bottom: 2px solid var(--guide-cyan);
+  background: rgba(0, 240, 255, 0.08);
+}
+
+/* KHUNG VIEWPORT NỘI DUNG CUỘN RIÊNG BIỆT (KHÔNG CO GIÃN MODAL) */
+.guide-hud-body {
+  padding: 16px;
+  flex: 1; /* Chiếm toàn bộ khoảng trống còn lại */
+  overflow-y: auto; /* Chỉ cuộn phần thân */
+  scrollbar-width: thin;
+  scrollbar-color: var(--guide-blue) transparent;
+  box-sizing: border-box;
+}
+
+.guide-hud-body::-webkit-scrollbar {
+  width: 5px;
+}
+
+.guide-hud-body::-webkit-scrollbar-thumb {
+  background: rgba(37, 99, 235, 0.5);
+  border-radius: 10px;
+}
+
+.guide-tab-content {
+  display: none;
+  animation: stepFade 0.25s ease;
+}
+
+.guide-tab-content.active {
+  display: block;
+}
+
+/* Components: Banner Tip */
+.guide-banner-tip {
+  background: rgba(37, 99, 235, 0.12);
+  border-left: 3.5px solid var(--guide-cyan);
+  padding: 8px 12px;
+  font-size: 11.5px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #bae6fd;
+}
+
+.guide-section-label {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--guide-cyan);
+  letter-spacing: 0.8px;
+  margin: 14px 0 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.guide-section-label:first-of-type {
+  margin-top: 0;
+}
+
+/* Lưới Lệnh Flash Command Cards */
+.guide-commands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.guide-cmd-card {
+  background: var(--guide-panel);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 9px 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.guide-cmd-card:hover {
+  background: rgba(37, 99, 235, 0.18);
+  border-color: var(--guide-cyan);
+  transform: translateY(-2px);
+}
+
+.guide-cmd-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.guide-code {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--guide-cyan);
+  font-size: 12px;
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 240, 255, 0.25);
+}
+
+.guide-copy-badge {
+  font-size: 10px;
+  color: var(--guide-muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.guide-cmd-desc {
+  font-size: 11.5px;
+  color: var(--guide-muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Thẻ Quy Tắc Sinh Tử */
+.guide-rule-card {
+  display: flex;
+  gap: 12px;
+  background: var(--guide-panel);
+  border-left: 3.5px solid var(--guide-cyan);
+  border-radius: 4px 8px 8px 4px;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  align-items: flex-start;
+}
+
+.guide-rule-card.danger {
+  border-left-color: #ef4444;
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.guide-rule-card.warn {
+  border-left-color: #f59e0b;
+}
+
+.guide-rule-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.guide-rule-body h4 {
+  margin: 0 0 3px 0;
+  font-size: 12.5px;
+  color: #fff;
+  font-weight: 800;
+}
+
+.guide-rule-body p {
+  margin: 0;
+  font-size: 11.5px;
+  color: var(--guide-muted);
+  line-height: 1.45;
+}
+
+/* Thẻ Tác Chiến Phe Phái */
+.guide-synergy-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.guide-synergy-card {
+  background: var(--guide-panel);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.guide-synergy-card.warn {
+  border-color: rgba(239, 68, 68, 0.4);
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.guide-syn-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.guide-syn-tag {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.tag-sniper { background: #1e3a8a; color: #93c5fd; }
+.tag-tanker { background: #064e3b; color: #6ee7b7; }
+.tag-scout { background: #581c87; color: #d8b4fe; }
+.tag-danger { background: #7f1d1d; color: #fca5a5; }
+
+.guide-synergy-card p {
+  margin: 0;
+  font-size: 11.5px;
+  color: var(--guide-muted);
+  line-height: 1.45;
+}
+
+/* Mẫu Patch Lỗi AI */
+.guide-patch-item {
+  background: var(--guide-panel);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+
+.guide-patch-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  gap: 8px;
+}
+
+.guide-patch-head strong {
+  font-size: 12px;
+  color: #fca5a5;
+}
+
+.guide-copy-btn {
+  background: var(--guide-blue);
+  color: #fff;
+  border: none;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.guide-copy-btn:hover {
+  background: #1d4ed8;
+}
+
+.guide-patch-code {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  padding: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #cbd5e1;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* Mẹo Viết Input Pro */
+.guide-formula-box {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(0, 240, 255, 0.1) 100%);
+  border: 1px solid var(--guide-border);
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.guide-formula-title {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--guide-cyan);
+  margin-bottom: 6px;
+}
+
+.guide-formula-eq {
+  font-size: 11.5px;
+  color: #fff;
+  font-weight: 700;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+}
+
+.guide-formula-eq span {
+  background: rgba(0, 0, 0, 0.35);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.4);
+}
+
+.guide-compare-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.guide-compare-card {
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 11.5px;
+  line-height: 1.45;
+}
+
+.guide-compare-card.bad {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.guide-compare-card.good {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.guide-comp-badge {
+  font-weight: 800;
+  font-size: 11px;
+  margin-bottom: 4px;
+}
+.guide-compare-card.bad .guide-comp-badge { color: #f87171; }
+.guide-compare-card.good .guide-comp-badge { color: #34d399; }
+
+.guide-comp-txt {
+  margin: 0 0 6px 0;
+  color: #cbd5e1;
+}
+
+.guide-comp-note {
+  display: block;
+  font-size: 10.5px;
+  color: var(--guide-muted);
+}
+
+/* Footer HUD */
+.guide-hud-footer {
+  padding: 10px 16px;
+  background: #050a14;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  gap: 10px;
+}
+
+.guide-hud-stats {
+  font-size: 11px;
+  color: var(--guide-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.guide-dot-live {
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #10b981;
+}
+
+.guide-btn-done {
+  background: var(--guide-blue);
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  font-size: 11.5px;
+  padding: 7px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.guide-btn-done:hover {
+  background: #1d4ed8;
+}
+
+/* ================= ĐỘ TƯƠNG THÍCH MÀN HÌNH 540PX & MOBILE ================= */
+@media (max-width: 540px) {
+  .guide-floating-widget {
+    bottom: 78px; /* Tự động thụt gọn cách nút đỏ phía dưới */
+    right: 16px;
+  }
+
+  .guide-pulse-btn {
+    width: 54px;
+    height: 54px;
+  }
+
+  .guide-btn-icon {
+    font-size: 18px;
+  }
+
+  .guide-btn-badge {
+    font-size: 7px;
+  }
+
+  .guide-hud-window {
+    height: 85vh; /* Chiều cao cố định trên điện thoại */
+    max-height: 85vh;
+  }
+
+  .guide-hud-header {
+    padding: 10px 14px;
+  }
+
+  .guide-hud-title {
+    font-size: 13.5px;
+  }
+
+  .guide-tab-item {
+    min-width: 85px;
+    font-size: 10.5px;
+    padding: 8px 6px;
+  }
+
+  .guide-hud-body {
+    padding: 10px;
+  }
+
+  .guide-commands-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-hud-footer {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .guide-hud-stats {
+    justify-content: center;
+  }
+}
 </style>
 </head>
 <body>
@@ -2599,6 +3271,304 @@
   </div>
 </div>
 <!-- ================= KẾT THÚC: NÚT & POPUP CẢNH BÁO KHẨN CẤP ================= -->
+
+<!-- ================= BẮT ĐẦU: CẨM NANG SINH TỒN (GAME HANDBOOK HUD) ================= -->
+
+<!-- Nút tròn nổi: Cẩm nang sinh tồn (Nằm phía trên nút Cảnh Báo Đỏ) -->
+<div class="guide-floating-widget">
+  <button id="guideFloatingBtn" class="guide-pulse-btn" aria-label="Cẩm nang sinh tồn mạt thế">
+    <div class="guide-radar-ring"></div>
+    <span class="guide-btn-icon"><i class="fa-solid fa-gamepad"></i></span>
+    <span class="guide-btn-badge">CẨM NANG</span>
+  </button>
+</div>
+
+<!-- Modal Cẩm Nang Sinh Tồn Khung Cố Định -->
+<div id="guideModalOverlay" class="guide-modal-overlay">
+  <div class="guide-hud-window">
+    
+    <!-- Header HUD -->
+    <div class="guide-hud-header">
+      <div class="guide-header-title-wrap">
+        <div class="guide-status-orb"></div>
+        <div>
+          <div class="guide-hud-tag"><i class="fa-solid fa-terminal"></i> PLAYER HANDBOOK // SYSTEM V2.4</div>
+          <h2 class="guide-hud-title">SỔ TAY SINH TỒN</h2>
+        </div>
+      </div>
+      <button id="guideCloseBtn" class="guide-btn-close" aria-label="Đóng cẩm nang">&times;</button>
+    </div>
+
+    <!-- Thanh chuyển Tab (Game Menu Bar) -->
+    <div class="guide-tab-navbar">
+      <button class="guide-tab-item active" data-tab="tab-commands">
+        <i class="fa-solid fa-bolt"></i> <span>FLASH COMMANDS</span>
+      </button>
+      <button class="guide-tab-item" data-tab="tab-rules">
+        <i class="fa-solid fa-shield-halved"></i> <span>LUẬT SINH TỬ</span>
+      </button>
+      <button class="guide-tab-item" data-tab="tab-synergy">
+        <i class="fa-solid fa-users-viewfinder"></i> <span>TÁC CHIẾN PHE</span>
+      </button>
+      <button class="guide-tab-item" data-tab="tab-fixai">
+        <i class="fa-solid fa-wrench"></i> <span>SỬA LỖI AI / OOC</span>
+      </button>
+      <button class="guide-tab-item" data-tab="tab-prorp">
+        <i class="fa-solid fa-pen-nib"></i> <span>MẸO VIẾT INPUT</span>
+      </button>
+    </div>
+
+    <!-- Khung nội dung có chiều cao cố định (Fixed Scrollable Viewport) -->
+    <div class="guide-hud-body">
+      
+      <!-- TAB 1: BẢNG LỆNH FLASH COMMANDS -->
+      <div id="tab-commands" class="guide-tab-content active">
+        <div class="guide-banner-tip">
+          <i class="fa-solid fa-circle-info"></i>
+          <span><strong>MẸO:</strong> Bấm vào bất kỳ lệnh nào bên dưới để sao chép nhanh vào clipboard!</span>
+        </div>
+
+        <div class="guide-section-label">⚡ LỆNH HỆ THỐNG & ĐIỀU PHỐI</div>
+        <div class="guide-commands-grid">
+          <div class="guide-cmd-card" onclick="copyCommandText('/resume')">
+            <div class="guide-cmd-top">
+              <code class="guide-code">/resume</code>
+              <span class="guide-copy-badge"><i class="fa-regular fa-copy"></i> Copy</span>
+            </div>
+            <p class="guide-cmd-desc">Ép AI tự động viết tiếp 1 lượt hành động nếu bạn chưa nghĩ ra input.</p>
+          </div>
+
+          <div class="guide-cmd-card" onclick="copyCommandText('/slow')">
+            <div class="guide-cmd-top">
+              <code class="guide-code">/slow</code>
+              <span class="guide-copy-badge"><i class="fa-regular fa-copy"></i> Copy</span>
+            </div>
+            <p class="guide-cmd-desc">Khóa nhịp độ vi mô — Ép AI miêu tả chi tiết từng giây, chống tua vội.</p>
+          </div>
+
+          <div class="guide-cmd-card" onclick="copyCommandText('/roll giật súng')">
+            <div class="guide-cmd-top">
+              <code class="guide-code">/roll [Hành động]</code>
+              <span class="guide-copy-badge"><i class="fa-regular fa-copy"></i> Copy</span>
+            </div>
+            <p class="guide-cmd-desc">Đổ xúc xắc kiểm tra tỉ lệ thành công/thất bại cho hành động nguy hiểm.</p>
+          </div>
+        </div>
+
+        <div class="guide-section-label">🔍 LỆNH TRA CỨU & TRINH SÁT</div>
+        <div class="guide-commands-grid">
+          <div class="guide-cmd-card" onclick="copyCommandText('/tui')">
+            <div class="guide-cmd-top">
+              <code class="guide-code">/tui</code>
+              <span class="guide-copy-badge"><i class="fa-regular fa-copy"></i> Copy</span>
+            </div>
+            <p class="guide-cmd-desc">Kiểm tra tải trọng ba lô (tối đa 15kg), đạn dược, nước uống & đồ cấm.</p>
+          </div>
+
+          <div class="guide-cmd-card" onclick="copyCommandText('/scan')">
+            <div class="guide-cmd-top">
+              <code class="guide-code">/scan</code>
+              <span class="guide-copy-badge"><i class="fa-regular fa-copy"></i> Copy</span>
+            </div>
+            <p class="guide-cmd-desc">Quét giác quan 360°: Âm thanh, mùi khói súng, điểm nấp và góc chết.</p>
+          </div>
+
+          <div class="guide-cmd-card" onclick="copyCommandText('/squad')">
+            <div class="guide-cmd-top">
+              <code class="guide-code">/squad</code>
+              <span class="guide-copy-badge"><i class="fa-regular fa-copy"></i> Copy</span>
+            </div>
+            <p class="guide-cmd-desc">Báo cáo sĩ số: Ai khỏe mạnh, ai bị thương, ai nghi nhiễm, ai đã tử trận.</p>
+          </div>
+        </div>
+
+        <div class="guide-section-label">🎬 LỆNH KHAI THÁC NPC</div>
+        <div class="guide-commands-grid">
+          <div class="guide-cmd-card" onclick="copyCommandText('/nghelen')">
+            <div class="guide-cmd-top">
+              <code class="guide-code">/nghelen [Tên/Vị trí]</code>
+              <span class="guide-copy-badge"><i class="fa-regular fa-copy"></i> Copy</span>
+            </div>
+            <p class="guide-cmd-desc">Nghe lén đối thoại bí mật giữa các NPC qua khe cửa hoặc góc tối.</p>
+          </div>
+
+          <div class="guide-cmd-card" onclick="copyCommandText('/vs Chu Khải Đặng Hạo')">
+            <div class="guide-cmd-top">
+              <code class="guide-code">/vs [NPC1] [NPC2]</code>
+              <span class="guide-copy-badge"><i class="fa-regular fa-copy"></i> Copy</span>
+            </div>
+            <p class="guide-cmd-desc">Kích hoạt cuộc ẩu đả / khẩu chiến bạo lực trực diện giữa 2 bạn học.</p>
+          </div>
+
+          <div class="guide-cmd-card" onclick="copyCommandText('/echo Lý Hào')">
+            <div class="guide-cmd-top">
+              <code class="guide-code">/echo [Tên NPC]</code>
+              <span class="guide-copy-badge"><i class="fa-regular fa-copy"></i> Copy</span>
+            </div>
+            <p class="guide-cmd-desc">Tái hiện lát cắt quá khứ đen tối và chấn thương tâm lý sâu kín của NPC.</p>
+          </div>
+
+          <div class="guide-cmd-card" onclick="copyCommandText('/dramacheck')">
+            <div class="guide-cmd-top">
+              <code class="guide-code">/dramacheck</code>
+              <span class="guide-copy-badge"><i class="fa-regular fa-copy"></i> Copy</span>
+            </div>
+            <p class="guide-cmd-desc">Quét các nhóm chat ẩn danh, tin đồn ngầm và cá cược lậu trong lớp.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: LUẬT SINH TỬ BẤT DI BẤT DỊCH -->
+      <div id="tab-rules" class="guide-tab-content">
+        <div class="guide-rule-card danger">
+          <div class="guide-rule-num">01</div>
+          <div class="guide-rule-body">
+            <h4>ANTI-GODMODE (KHÔNG HÀO QUANG NHÂN VẬT CHÍNH)</h4>
+            <p>Không có siêu năng lực thức tỉnh hay sức mạnh niềm tin. Bị cắn sâu là nhiễm mầm bệnh X-7. Bắn súng không tì vai sẽ bị trật khớp. Nhảy ẩu gãy chân.</p>
+          </div>
+        </div>
+
+        <div class="guide-rule-card warn">
+          <div class="guide-rule-num">02</div>
+          <div class="guide-rule-body">
+            <h4>14 NGÀY QUÂN TRƯỜNG LÀ TÀI NGUYÊN SỐNG</h4>
+            <p>Trốn chạy việt dã sẽ bị giảm thể lực tối đa vĩnh viễn (50/50). Lười tập bảo dưỡng vũ khí sẽ tăng 80% nguy cơ kẹt đạn khi quái vật áp sát.</p>
+          </div>
+        </div>
+
+        <div class="guide-rule-card danger">
+          <div class="guide-rule-num">03</div>
+          <div class="guide-rule-body">
+            <h4>ÂM THANH LÀ BẢN ÁN TỬ HÌNH</h4>
+            <p>Quái vật bị mù nhưng thính giác cực nhạy. Tiếng hét của Bạch Giai Giai, tiếng chuông điện thoại của Bành Gia Lương sẽ thu hút cả đàn trong bán kính 1km.</p>
+          </div>
+        </div>
+
+        <div class="guide-rule-card normal">
+          <div class="guide-rule-num">04</div>
+          <div class="guide-rule-body">
+            <h4>QUY TẮC CẮT BỎ CHI CẤP CỨU: 180 GIÂY VÀNG</h4>
+            <p>Nếu bị cắn ở cẳng tay/cẳng chân, cách duy nhất để sống là thắt garo và chặt đứt phần chi đó trong vòng 3 phút trước khi độc tố chạy về tim.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: TÁC CHIẾN PHE PHÁI -->
+      <div id="tab-synergy" class="guide-tab-content">
+        <div class="guide-synergy-grid">
+          
+          <div class="guide-synergy-card">
+            <div class="guide-syn-header">
+              <span class="guide-syn-tag tag-sniper"><i class="fa-solid fa-crosshairs"></i> XẠ THỦ TUYẾN SAU</span>
+              <strong>Triệu Kính Đình & Lý Hào</strong>
+            </div>
+            <p>Cần giữ khoảng cách an toàn cho họ. Triệu Kính Đình bắn tỉa chính xác cự ly 300m, Lý Hào máu lạnh bắn nát đầu quái vật không run tay.</p>
+          </div>
+
+          <div class="guide-synergy-card">
+            <div class="guide-syn-header">
+              <span class="guide-syn-tag tag-tanker"><i class="fa-solid fa-shield"></i> TẤM KHIÊN TIÊN PHONG</span>
+              <strong>Chu Khải, Đào Dật Phong, Hạ Chiêu Dã</strong>
+            </div>
+            <p>Lực cơ bắp mạnh nhất lớp. Sử dụng để phá cửa sổ, chặn cửa sắt đang bị xô đẩy hoặc cận chiến dập tắt mối đe dọa tầm gần.</p>
+          </div>
+
+          <div class="guide-synergy-card">
+            <div class="guide-syn-header">
+              <span class="guide-syn-tag tag-scout"><i class="fa-solid fa-ear-listen"></i> TAI MẮT TRINH SÁT</span>
+              <strong>Doãn Thiên Tầm & Tô Hiếu Dĩ</strong>
+            </div>
+            <p>Thiên Tầm nghe thấy tiếng quái vật tiếp cận sớm hơn 30 giây. Hiếu Dĩ có tốc độ bứt phá kỷ lục để làm mồi nhử mở đường máu.</p>
+          </div>
+
+          <div class="guide-synergy-card warn">
+            <div class="guide-syn-header">
+              <span class="guide-syn-tag tag-danger"><i class="fa-solid fa-triangle-exclamation"></i> MỐI HỌA NỘI BỘ</span>
+              <strong>Đặng Hạo, Vạn Duyên Hoa, Kim Văn Phúc</strong>
+            </div>
+            <p>Cảnh giác cao độ: Đặng Hạo sẵn sàng xô bạn ngã cản đường quái; Kim Văn Phúc giấu thức ăn; Vạn Duyên Hoa chia rẽ tinh thần đồng đội.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- TAB 4: FIX LỖI AI / RETAKE TEMPLATES -->
+      <div id="tab-fixai" class="guide-tab-content">
+        <div class="guide-banner-tip">
+          <i class="fa-solid fa-terminal"></i>
+          <span>Khi AI bị lệch tính cách hoặc tua nhanh, copy mẫu lệnh bên dưới và gửi trực tiếp vào khung chat:</span>
+        </div>
+
+        <div class="guide-patch-item">
+          <div class="guide-patch-head">
+            <strong>❌ LỖI: AI tự viết hành động/thoại của bạn (God-modding)</strong>
+            <button class="guide-copy-btn" onclick="copyPatchText(this)">Copy Lệnh</button>
+          </div>
+          <pre class="guide-patch-code">/ooc Retake. Vi phạm quy tắc NO GOD-MODDING. Bạn đang tự ý viết suy nghĩ/hành động/lời nói của tôi. Hãy xóa toàn bộ phần đó, chỉ miêu tả hành động và lời thoại của NPC xung quanh, sau đó dừng lại chờ tôi phản ứng.</pre>
+        </div>
+
+        <div class="guide-patch-item">
+          <div class="guide-patch-head">
+            <strong>❌ LỖI: AI tua nhanh thời gian (Timeskip / Rush cốt truyện)</strong>
+            <button class="guide-copy-btn" onclick="copyPatchText(this)">Copy Lệnh</button>
+          </div>
+          <pre class="guide-patch-code">/ooc Retake. Vi phạm quy tắc ANTI-PLOT RUSH. Hiện tại vẫn đang trong giai đoạn 14 ngày quân trường, tuyệt đối không tua sang buổi tối hay hôm sau. Hãy phân rã tình huống hiện tại thành từng giây vi mô và giữ nguyên hiện trường.</pre>
+        </div>
+
+        <div class="guide-patch-item">
+          <div class="guide-patch-head">
+            <strong>❌ LỖI: NPC bị câm, chỉ đứng nhìn người chơi (Thụ động)</strong>
+            <button class="guide-copy-btn" onclick="copyPatchText(this)">Copy Lệnh</button>
+          </div>
+          <pre class="guide-patch-code">/ooc Retake. NPC đang quá mờ nhạt và bị động. Bắt buộc kích hoạt NPC-DRIVEN NARRATIVE: Cho Chu Khải, Đặng Hạo hoặc Tạ Yến Tranh chủ động chửi thề, bày trò nghịch ngợm hoặc gây gổ với nhau. Dành ít nhất 60% dung lượng cho đối thoại chéo giữa các NPC.</pre>
+        </div>
+
+        <div class="guide-patch-item">
+          <div class="guide-patch-head">
+            <strong>❌ LỖI: Phản hồi quá ngắn / Dùng từ cấm</strong>
+            <button class="guide-copy-btn" onclick="copyPatchText(this)">Copy Lệnh</button>
+          </div>
+          <pre class="guide-patch-code">/ooc Retake. Phản hồi quá ngắn. Yêu cầu viết từ 4000 - 5000 ký tự, nhiều đối thoại thực tế. Lưu ý Blacklist: CẤM dùng các từ "dã chiến", "dã ngoại".</pre>
+        </div>
+      </div>
+
+      <!-- TAB 5: MẸO VIẾT INPUT PRO-RP -->
+      <div id="tab-prorp" class="guide-tab-content">
+        <div class="guide-formula-box">
+          <div class="guide-formula-title"><i class="fa-solid fa-wand-magic-sparkles"></i> CÔNG THỨC INPUT ĐỈNH CAO (KÍCH ĐỐI THOẠI DÀI)</div>
+          <div class="guide-formula-eq">
+            <span>Hành động vật lý</span> + <span>Lời thoại tự nhiên</span> + <span>Tương tác môi trường</span> + <span>Động thái mở dở dang</span>
+          </div>
+        </div>
+
+        <div class="guide-compare-grid">
+          <div class="guide-compare-card bad">
+            <div class="guide-comp-badge"><i class="fa-solid fa-xmark"></i> INPUT SƠ SÀI (DỄ BỊ NGẮN CHỮ)</div>
+            <p class="guide-comp-txt"><em>"Tôi mở ba lô ra cho thầy Hứa kiểm tra rồi đứng im chờ thầy nói."</em></p>
+            <span class="guide-comp-note">➔ Hậu quả: AI không có dữ liệu để phản hồi, dẫn đến viết cụt ngủn hoặc tự tua cảnh.</span>
+          </div>
+
+          <div class="guide-compare-card good">
+            <div class="guide-comp-badge"><i class="fa-solid fa-check"></i> INPUT PRO (KÉO 4000-5000 KÝ TỰ)</div>
+            <p class="guide-comp-txt"><em>"Tôi từ từ ngồi xổm xuống trước mũi giày của Hứa Lỗi để câu giờ, chân lén gạt gói đồ cấm sang phía Tạ Yến Tranh. Tôi ngẩng đầu nhìn thẳng thầy Hứa: <strong>'Em đâu có gan giấu đồ cấm.'</strong> Dứt lời, tôi lật tung ngăn ngoài để lộ đống đề cương ôn thi, mắt liếc sang phía Chu Khải đang chuẩn bị đấm nhau bên cạnh..."</em></p>
+            <span class="guide-comp-note">➔ Hiệu quả: Kéo liền lúc 3 NPC (Hứa Lỗi, Tạ Yến Tranh, Chu Khải) cùng phản ứng!</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer HUD -->
+    <div class="guide-hud-footer">
+      <div class="guide-hud-stats">
+        <span class="guide-dot-live"></span> CƠ CHẾ SINH TỒN: <strong>NGHIÊM NGẶT</strong>
+      </div>
+      <button class="guide-btn-done" onclick="closeGuideModal()">ĐÃ HIỂU HƯỚNG DẪN <i class="fa-solid fa-check"></i></button>
+    </div>
+
+  </div>
+</div>
+<!-- ================= KẾT THÚC: CẨM NANG SINH TỒN ================= -->
     
     <!-- FOOTER -->
     <footer>
@@ -3641,6 +4611,128 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   });
+});
+// ================= JS ĐIỀU KHIỂN CẨM NANG SINH TỒN (PLAYER HANDBOOK) ================= //
+document.addEventListener('DOMContentLoaded', function () {
+  const guideBtn = document.getElementById('guideFloatingBtn');
+  const guideOverlay = document.getElementById('guideModalOverlay');
+  const guideCloseBtn = document.getElementById('guideCloseBtn');
+  const guideTabItems = document.querySelectorAll('.guide-tab-item');
+  const guideTabContents = document.querySelectorAll('.guide-tab-content');
+
+  // Mở Modal
+  window.openGuideModal = function () {
+    if (guideOverlay) {
+      guideOverlay.classList.add('show');
+      document.body.style.overflow = 'hidden'; // Khóa cuộn trang nền
+    }
+  };
+
+  // Đóng Modal
+  window.closeGuideModal = function () {
+    if (guideOverlay) {
+      guideOverlay.classList.remove('show');
+      document.body.style.overflow = ''; // Mở lại cuộn trang nền
+    }
+  };
+
+  if (guideBtn) guideBtn.addEventListener('click', openGuideModal);
+  if (guideCloseBtn) guideCloseBtn.addEventListener('click', closeGuideModal);
+
+  // Đóng khi nhấp bên ngoài khung Modal
+  if (guideOverlay) {
+    guideOverlay.addEventListener('click', function (e) {
+      if (e.target === guideOverlay) {
+        closeGuideModal();
+      }
+    });
+  }
+
+  // Đóng bằng phím ESC
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && guideOverlay && guideOverlay.classList.contains('show')) {
+      closeGuideModal();
+    }
+  });
+
+  // Chuyển Tab (Giữ nguyên kích thước khung)
+  guideTabItems.forEach(tab => {
+    tab.addEventListener('click', function () {
+      const targetTabId = this.getAttribute('data-tab');
+
+      // Đổi trạng thái tab nút
+      guideTabItems.forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+
+      // Đổi nội dung tab
+      guideTabContents.forEach(content => {
+        content.classList.remove('active');
+        if (content.id === targetTabId) {
+          content.classList.add('active');
+        }
+      });
+    });
+  });
+
+  // Tính năng 1: Bấm thẻ lệnh để sao chép vào Clipboard
+  window.copyCommandText = function (commandText) {
+    navigator.clipboard.writeText(commandText).then(() => {
+      showCopyToast(`Đã sao chép lệnh: ${commandText}`);
+    });
+  };
+
+  // Tính năng 2: Bấm nút copy mẫu lệnh Patch AI
+  window.copyPatchText = function (btnElement) {
+    const codeBlock = btnElement.closest('.guide-patch-item').querySelector('.guide-patch-code');
+    if (codeBlock) {
+      const textToCopy = codeBlock.innerText.trim();
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const originalText = btnElement.innerText;
+        btnElement.innerText = 'Đã chép! ✓';
+        btnElement.style.background = '#10b981';
+        setTimeout(() => {
+          btnElement.innerText = originalText;
+          btnElement.style.background = '';
+        }, 1500);
+      });
+    }
+  };
+
+  // Toast thông báo nhỏ góc màn hình khi copy thành công
+  function showCopyToast(message) {
+    let toast = document.getElementById('guideCopyToast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'guideCopyToast';
+      toast.style.cssText = `
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
+        background: #0f172a;
+        color: #00f0ff;
+        border: 1px solid #00f0ff;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 700;
+        z-index: 100005;
+        box-shadow: 0 4px 20px rgba(0, 240, 255, 0.4);
+        opacity: 0;
+        transition: all 0.25s ease;
+        pointer-events: none;
+        font-family: 'JetBrains Mono', monospace;
+      `;
+      document.body.appendChild(toast);
+    }
+    toast.innerText = message;
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateX(-50%) translateY(0)';
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateX(-50%) translateY(20px)';
+    }, 2000);
+  }
 });
     </script>
 </body>
